@@ -5,10 +5,27 @@ import axios from "axios"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import './Explorer.css'
 import PageLayout from "../../shared/PageLayout/PageLayout"
-
+import { mainURL } from '../../helpers/ExploreServices/ExploreURLs'
+import * as exploreServices from '../../helpers/ExploreServices/ExploreServices'
 const Explorer = () => {
     const [cards, setCards] = useState([]);
     const [cities, setCities] = useState([]);
+
+    //_______________________________________
+    const [selectedCity, setSelectedCity] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [sortBy, setSortBy] = useState('');
+    const [totalPages, setTotalPages] = useState(0);
+    const [loading, setLoading] = useState(false);
+
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    //_______________________________________
+
+
 
     const { section } = useParams();
 
@@ -29,30 +46,69 @@ const Explorer = () => {
     // }, []);
 
     const [page, setPage] = useState(1);
+    // useEffect(() => {
+    //     if (!["lands", "resturants", "hotels"].includes(section)) {
+    //         to('/error');
+    //     }
 
-    useEffect(() => {
-        if (!["lands", "resturants", "hotels"].includes(section)) {
-            to('/error');
-        }
+    //     setIsLoading(true);
 
+    //     const apiName =
+    //         section === "resturants" ? "restaurants/page/"
+    //             :
+    //             section === "hotels" ? "hotels" : "landmarks" || 'restaurants/page/1'
+
+    //     axios.get('http://127.0.0.1:8000/api/' + apiName)
+    //         .then(res => {
+    //             console.log("landmarks api", res);
+    //             setCards(res.data.data);
+    //             setTotalPages(res.data.pagination.total_pages);
+    //             setCurrentPage(res.data.pagination.currentPage);
+    //             console.log("cards api", cards);
+
+
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // }, [section]);
+
+    const getAllData = async () => {
         setIsLoading(true);
 
         const apiName =
-            section === "resturants" ?
-                "restaurants/page/" + page :
-                section === "hotels" ?
-                    "hotels" : "landmarks"
-                    || 'restaurants/page/1'
+            section === "resturants" ? "restaurants/page/"
+                :
+                section === "hotels" ? "hotels" : "landmarks" || 'restaurants/page/1'
+        try {
+            setLoading(false);
+            const response = await exploreServices.getAllExploreData(apiName, currentPage, '', '');
+            console.log('response', response);
+            setCards(response.data);
+            console.log('cards', cards);
 
-        axios.get('http://127.0.0.1:8000/api/' + apiName)
-            .then(res => {
-                console.log(res);
-                setCards(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, [section]);
+            setTotalPages(response.pagination.total_pages);
+            // setCurrentPage(response.pagination.currentPage);
+
+        } catch (error) {
+            setLoading(false);
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        console.log('currentPage',currentPage);
+        getAllData();
+    }, [currentPage]);
+
+    useEffect(() => {
+        console.log('currentPage',currentPage);
+        getAllData();
+    }, []);
+    useEffect(() => {
+        console.log('loading', loading);
+    }, [loading]);
+
 
     const [search, setSearch] = useState();
     const [select1, setSelect1] = useState();
@@ -87,28 +143,55 @@ const Explorer = () => {
                 setValue={(e) => setSearch(e.target.value)}
                 select1={select1}
                 select2={select2}>
-                {/* {cards && cards.map((card, i) => <Card brief={card?.primary_description} button={section === 'lands'? 'أقرأ المزيد': 'أحجز الآن'} image={section !== 'lands'? card.cover_image :card.external_image} location={card.location} price={card?.table_price} price_exists={section !== 'lands'} rate={4.7} title={card.name} text={section === 'lands'? card.location:'مغلق الان'} key={i}/>)} */}
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((card, i) =>
-                    <Card
-                        brief={"qvwveeeeeeeeeeeeeeee"}
-                        button={section === 'lands' ? 'أقرأ المزيد' : 'أحجز الآن'}
-                        image={img} location={'se2se2s'}
-                        price={'200'}
-                        price_exists={section !== 'lands'}
-                        rate={4.7} title={"x2xe2x"}
-                        text={section === 'lands' ? "d2d2ed2e" : 'مغلق الان'}
-                        key={i} />)}
-                    {/* <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute' > */}
-                    <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute ' >
-                        {[1, 2, 3, 4].map((e, i) => (
-                            <div
-                                key={i}
-                                className={`${page == i + 1 ? 'active' : ''}`}
-                                onClick={() => setPage(i + 1)}
-                            />
-                        ))}
 
-                    
+                {/* {!loading && section === 'lands' && cards && cards.map((card, index) => */}
+                {!loading && section === 'lands' && cards && cards.map((card, index) =>
+                    <Card
+                        brief={card.primary_description}
+                        button={'أقرأ المزيد'}
+                        image={mainURL + card.internal_image}
+                        location={card.city}
+                        price={""}
+                        price_exists={false}
+                        rate={4.7}
+                        title={card.name}
+                        text={''}
+                        key={card.id} />)}
+
+                {section === 'hotels' && cards && cards.map((card, index) =>
+                    <Card
+                        brief={card.primary_description}
+                        button={'احجز الآن'}
+                        image={mainURL + card.logo}
+                        location={`${card.city_name} - ${card.location}`}
+                        price={card.price}
+                        price_exists={true}
+                        rate={4.7}
+                        title={card.name}
+                        text={"في الليلة"}
+                        key={card.id} />)}
+
+                {section === 'resturants' && cards && cards.map((card, index) =>
+                    <Card
+                        brief={card.primary_description}
+                        button={'احجز الآن'}
+                        image={mainURL + card.logo}
+                        location={`${card.city_name} - ${card.location}`}
+                        price={card.table_price}
+                        price_exists={true}
+                        rate={4.7}
+                        title={card.name}
+                        text={"مغلق الآن"}
+                        key={card.id} />)}
+
+                <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute ' >
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <div
+                            key={index}
+                            className={`${currentPage == index + 1 ? 'active' : ''}`}
+                            onClick={() => handlePageChange(index+1)}
+                        />
+                    ))}
                 </div>
 
 

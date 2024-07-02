@@ -1,28 +1,29 @@
-import {apiUrl} from './ExploreURLs'
+import { apiUrl, mainURL, CitiesAPIURL } from './ExploreURLs'
+import { useEffect, useState } from "react"
+
 import axios from "axios"
 
-// const apiName =
-// section === "resturants" ? "restaurants/page/"
-//     :
-//     section === "hotels" ? "hotels" : "landmarks" || 'restaurants/page/1'
+export function useFetchCities() {
+    const [cities, setCities] = useState([]);
+    const [cityNames, setCityNames] = useState([]);
+    const [isLoadingCities, setIsLoadingCities] = useState(false);
 
-// axios.get('http://127.0.0.1:8000/api/' + apiName)
-// .then(res => {
-//     console.log("landmarks api", res);
-//     setCards(res.data.data);
-//     setTotalPages(res.data.pagination.total_pages);
-//     setCurrentPage(res.data.pagination.currentPage);
-//     console.log("cards api", cards);
+    useEffect(() => {
+        setIsLoadingCities(true);
+        axios.get(CitiesAPIURL)
+            .then(res => {
+                console.log("res cities", res);
+                setCities(res.data.data);
+                const names = res.data.data.map(city => city.name);
+                setCityNames(names);
+            })
+            .finally(() => setIsLoadingCities(false));
+    }, []);
 
-//     if (apiName == "landmarks") {
-//     }
-// })
-// .catch(err => {
-//     console.log(err);
-// })
+    return { cities, cityNames, isLoadingCities };
+}
 
-
-export async function getAllExploreData(apiName, currentPage, selectedCity, sortBy) {
+export async function getAllExploreData(apiName, currentPage, selectedCity = null, sortBy = null) {
     try {
         const cityQuery = selectedCity ? `&city=${selectedCity}` : '';
         const sortQuery = sortBy ? `&sort_by=${sortBy}` : '';

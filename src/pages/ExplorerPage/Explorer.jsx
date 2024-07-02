@@ -9,9 +9,23 @@ import { mainURL } from '../../helpers/ExploreServices/ExploreURLs'
 import * as exploreServices from '../../helpers/ExploreServices/ExploreServices'
 const Explorer = () => {
     const [cards, setCards] = useState([]);
-    const [cities, setCities] = useState([]);
+    const { cities, cityNames, isLoadingCities } = exploreServices.useFetchCities();
+    console.log('cities', cities);
+    console.log('cityNames', cityNames);
 
-    //_______________________________________
+    const sortByListLandmarks = [
+        { label: 'ID', value: 'id' },
+        { label: 'الاسم', value: 'name' },
+        { label: 'المحافظة', value: 'city' },
+        { label: 'الموقع', value: 'location' },
+    ];
+    const sortByListHotelsRestorants = [
+        { label: 'ID', value: 'id' },
+        { label: 'الاسم', value: 'name' },
+        { label: 'المحافظة', value: 'city_name' },
+        { label: 'الموقع', value: 'location' },
+    ];
+
     const [selectedCity, setSelectedCity] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [sortBy, setSortBy] = useState('');
@@ -21,6 +35,7 @@ const Explorer = () => {
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+        console.log("ffffffff");
     };
 
     //_______________________________________
@@ -33,86 +48,40 @@ const Explorer = () => {
 
     const to = useNavigate();
 
-    const [cityNames, setCityNames] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    // useEffect(() => {
-    //     axios.get('http://127.0.0.1:8000/api/cities')
-    //         .then(res => {
-    //             console.log(res.data.data);
-    //             setCities(res.data.data);
-    //             const names = res.data.data.map(city => city.name);
-    //             setCityNames(names);
-    //         })
-    // }, []);
-
-    const [page, setPage] = useState(1);
-    // useEffect(() => {
-    //     if (!["lands", "resturants", "hotels"].includes(section)) {
-    //         to('/error');
-    //     }
-
-    //     setIsLoading(true);
-
-    //     const apiName =
-    //         section === "resturants" ? "restaurants/page/"
-    //             :
-    //             section === "hotels" ? "hotels" : "landmarks" || 'restaurants/page/1'
-
-    //     axios.get('http://127.0.0.1:8000/api/' + apiName)
-    //         .then(res => {
-    //             console.log("landmarks api", res);
-    //             setCards(res.data.data);
-    //             setTotalPages(res.data.pagination.total_pages);
-    //             setCurrentPage(res.data.pagination.currentPage);
-    //             console.log("cards api", cards);
-
-
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }, [section]);
 
     const getAllData = async () => {
-        setIsLoading(true);
-
+        setLoading(true);
         const apiName =
             section === "resturants" ? "restaurants/page/"
                 :
                 section === "hotels" ? "hotels" : "landmarks" || 'restaurants/page/1'
         try {
             setLoading(false);
-            const response = await exploreServices.getAllExploreData(apiName, currentPage, '', '');
+            const response = await exploreServices.getAllExploreData(apiName, currentPage, (selectedCity != "" ? selectedCity : null), (sortBy != "" ? sortBy : null));
             console.log('response', response);
             setCards(response.data);
             console.log('cards', cards);
-
             setTotalPages(response.pagination.total_pages);
-            // setCurrentPage(response.pagination.currentPage);
 
         } catch (error) {
             setLoading(false);
             console.log(error);
         }
     };
-
     useEffect(() => {
         console.log('currentPage', currentPage);
         getAllData();
-    }, [currentPage]);
+    }, [section]);
 
-    useEffect(() => {
-        console.log('currentPage', currentPage);
-        getAllData();
-    }, []);
+
     useEffect(() => {
         console.log('loading', loading);
     }, [loading]);
 
 
     const [search, setSearch] = useState();
-    const [select1, setSelect1] = useState();
-    const [select2, setSelect2] = useState();
+    const [select1, setSelect1] = useState([]);
+    const [select2, setSelect2] = useState([]);
 
     const handleSearch = () => {
         if (search) {
@@ -120,29 +89,34 @@ const Explorer = () => {
         }
     }
 
-    const handleSelect1 = () => {
-        if (select1) {
-            setCards(cards?.filter(e => e.city_id === select1))
-        }
-    }
 
-    const handleSelect2 = () => {
-        if (select2) {
-            setCards(cards?.sort((a, b) => a.select2 < a.select2))
-        }
-    }
+    useEffect(() => {
+        console.log('select1', select1);
+        console.log('select2', select2);
+        setSelectedCity(select1);
+        setSortBy(select2);
+
+    }, [select1, select2]);
+
+    useEffect(() => {
+        console.log('currentPage', currentPage);
+        console.log('selectedCity', selectedCity);
+        getAllData();
+    }, [currentPage, selectedCity, sortBy]);
 
     return (
         <div className="position-relative">
             <PageLayout
                 img={img}
-                options1={cities}
-                onClickBtn={handleSearch}
-                setFirstSelect={handleSelect1}
-                setSecondSelect={handleSelect2}
-                setValue={(e) => setSearch(e.target.value)}
+                options1={cityNames}
+                options2={(section === 'lands'? sortByListLandmarks:sortByListHotelsRestorants )}
+                setFirstSelect={setSelect1}
+                setSecondSelect={setSelect2}
                 select1={select1}
-                select2={select2}>
+                select2={select2}
+                setValue={(e) => setSearch(e.target.value)}
+                onClickBtn={handleSearch}>
+
 
                 {!loading && section === 'lands' && cards && cards.map((card, index) =>
                     <Card

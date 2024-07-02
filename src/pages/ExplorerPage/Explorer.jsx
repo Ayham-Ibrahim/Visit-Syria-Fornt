@@ -18,32 +18,33 @@ const Explorer = () => {
 
     const [cityNames, setCityNames] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/cities')
-            .then(res => {
-                setCities(res.data.data);
-                const names = res.data.data.map(city => city.name);
-                setCityNames(names);
-            })
-    }, []);
+    // useEffect(() => {
+    //     axios.get('http://127.0.0.1:8000/api/cities')
+    //         .then(res => {
+    //             console.log(res.data.data);
+    //             setCities(res.data.data);
+    //             const names = res.data.data.map(city => city.name);
+    //             setCityNames(names);
+    //         })
+    // }, []);
 
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        if(!["lands", "resturants", "hotels"].includes(section)) {
+        if (!["lands", "resturants", "hotels"].includes(section)) {
             to('/error');
         }
 
         setIsLoading(true);
 
-        const apiName = 
-            section === "resturants"? 
-                "restaurants/page/"+page : 
-                    section === "hotels"? 
-                "hotels" : "landmarks"
-            || 'restaurants/page/1'
+        const apiName =
+            section === "resturants" ?
+                "restaurants/page/" + page :
+                section === "hotels" ?
+                    "hotels" : "landmarks"
+                    || 'restaurants/page/1'
 
-        axios.get('http://127.0.0.1:8000/api/'+apiName)
+        axios.get('http://127.0.0.1:8000/api/' + apiName)
             .then(res => {
                 console.log(res);
                 setCards(res.data);
@@ -58,38 +59,60 @@ const Explorer = () => {
     const [select2, setSelect2] = useState();
 
     const handleSearch = () => {
-        if(search) {
+        if (search) {
             setCards(cards?.filter(e => e.name === search));
         }
     }
 
     const handleSelect1 = () => {
-        if(select1) {
+        if (select1) {
             setCards(cards?.filter(e => e.city_id === select1))
         }
     }
-    
+
     const handleSelect2 = () => {
-        if(select2) {
+        if (select2) {
             setCards(cards?.sort((a, b) => a.select2 < a.select2))
         }
     }
 
     return (
         <div className="position-relative">
-        <PageLayout img={img} options1={cities} onClickBtn={handleSearch} setFirstSelect={handleSelect1} setSecondSelect={handleSelect2} setValue={(e) => setSearch(e.target.value)} select1={select1} select2={select2}>
-            {/* {cards && cards.map((card, i) => <Card brief={card?.primary_description} button={section === 'lands'? 'أقرأ المزيد': 'أحجز الآن'} image={section !== 'lands'? card.cover_image :card.external_image} location={card.location} price={card?.table_price} price_exists={section !== 'lands'} rate={4.7} title={card.name} text={section === 'lands'? card.location:'مغلق الان'} key={i}/>)} */}
-            {[1,2,3,4,5,6,7,8].map((card, i) => <Card brief={"qvwveeeeeeeeeeeeeeee"} button={section === 'lands'? 'أقرأ المزيد': 'أحجز الآن'} image={img} location={'se2se2s'} price={'200'} price_exists={section !== 'lands'} rate={4.7} title={"x2xe2x"} text={section === 'lands'? "d2d2ed2e":'مغلق الان'} key={i}/>)}
-            <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute' style={{bottom: '70px', left: "50%", transform: "translateX(-50%)"}}>
-                {[1,2,3,4].map((e, i) => (
-                    <div
-                        key={i}
-                        className={`${page==i+1? 'active' : ''}`}
-                        onClick={() => setPage(i+1)}
-                    />
-                ))}
-            </div>
-        </PageLayout>
+            <PageLayout
+                img={img}
+                options1={cities}
+                onClickBtn={handleSearch}
+                setFirstSelect={handleSelect1}
+                setSecondSelect={handleSelect2}
+                setValue={(e) => setSearch(e.target.value)}
+                select1={select1}
+                select2={select2}>
+                {/* {cards && cards.map((card, i) => <Card brief={card?.primary_description} button={section === 'lands'? 'أقرأ المزيد': 'أحجز الآن'} image={section !== 'lands'? card.cover_image :card.external_image} location={card.location} price={card?.table_price} price_exists={section !== 'lands'} rate={4.7} title={card.name} text={section === 'lands'? card.location:'مغلق الان'} key={i}/>)} */}
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((card, i) =>
+                    <Card
+                        brief={"qvwveeeeeeeeeeeeeeee"}
+                        button={section === 'lands' ? 'أقرأ المزيد' : 'أحجز الآن'}
+                        image={img} location={'se2se2s'}
+                        price={'200'}
+                        price_exists={section !== 'lands'}
+                        rate={4.7} title={"x2xe2x"}
+                        text={section === 'lands' ? "d2d2ed2e" : 'مغلق الان'}
+                        key={i} />)}
+                    {/* <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute' > */}
+                    <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute ' >
+                        {[1, 2, 3, 4].map((e, i) => (
+                            <div
+                                key={i}
+                                className={`${page == i + 1 ? 'active' : ''}`}
+                                onClick={() => setPage(i + 1)}
+                            />
+                        ))}
+
+                    
+                </div>
+
+
+            </PageLayout>
         </div>
     )
 }

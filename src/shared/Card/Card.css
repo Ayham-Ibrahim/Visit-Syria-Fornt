@@ -1,7 +1,9 @@
 .BY_MainCard {
   background-color: var(--white);
   box-shadow: 8px 4px 14px 0px var(--black_trans_05);
-  width: 369px;
+  /* width: 369px; */
+  width: 100%;
+  max-width: 369px;
   max-height: 500px;
   border-radius: 15px;
 }

@@ -79,7 +79,7 @@ function PageLayout( { img, value, setValue, onClickBtn, options1, options2 = ['
             </div>
         </div>
         }
-        <div className={`mx-auto explorer-cards-grid h-auto ${!pathname.includes('explore')? 'd-block':''}`}>
+        <div className={`mx-auto explorer-cards-grid h-auto ${!pathname.includes('explore')? 'd-block':''}`} style={{ display: 'grid', maxWidth: '1200px', margin: '0 auto' }}>
           { children }
         </div>
       </div>

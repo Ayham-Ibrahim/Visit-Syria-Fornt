@@ -1,10 +1,11 @@
 .BY_MainCard {
   background-color: var(--white);
   box-shadow: 8px 4px 14px 0px var(--black_trans_05);
-  /* width: 369px; */
   width: 100%;
   max-width: 369px;
   max-height: 500px;
+  height: 500px;
+
   border-radius: 15px;
 }
 
@@ -108,7 +109,7 @@
   font-weight: 400;
   line-height: 22.81px;
   color: var(--light_gray_icons);
-  width: 40%;
+  width: 50%;
   display: flex;
   align-items: center;
   gap: 7px;

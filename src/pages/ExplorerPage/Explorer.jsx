@@ -97,12 +97,12 @@ const Explorer = () => {
     };
 
     useEffect(() => {
-        console.log('currentPage',currentPage);
+        console.log('currentPage', currentPage);
         getAllData();
     }, [currentPage]);
 
     useEffect(() => {
-        console.log('currentPage',currentPage);
+        console.log('currentPage', currentPage);
         getAllData();
     }, []);
     useEffect(() => {
@@ -144,7 +144,6 @@ const Explorer = () => {
                 select1={select1}
                 select2={select2}>
 
-                {/* {!loading && section === 'lands' && cards && cards.map((card, index) => */}
                 {!loading && section === 'lands' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
@@ -158,7 +157,7 @@ const Explorer = () => {
                         text={''}
                         key={card.id} />)}
 
-                {section === 'hotels' && cards && cards.map((card, index) =>
+                {!loading && section === 'hotels' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
                         button={'احجز الآن'}
@@ -171,7 +170,7 @@ const Explorer = () => {
                         text={"في الليلة"}
                         key={card.id} />)}
 
-                {section === 'resturants' && cards && cards.map((card, index) =>
+                {!loading && section === 'resturants' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
                         button={'احجز الآن'}
@@ -189,7 +188,7 @@ const Explorer = () => {
                         <div
                             key={index}
                             className={`${currentPage == index + 1 ? 'active' : ''}`}
-                            onClick={() => handlePageChange(index+1)}
+                            onClick={() => handlePageChange(index + 1)}
                         />
                     ))}
                 </div>

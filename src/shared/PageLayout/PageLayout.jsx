@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io';
 // import SearchBox from '../SearchBox/SearchBox';
 
-// function PageLayout( { img, value, setValue, onClickBtn, options1, options2 = ['id', 'الاسم', 'المحافظة'], setFirstSelect, setSecondSelect, select1, select2, children } ) {
 function PageLayout({ img, value, setValue, onClickBtn, options1, options2, setFirstSelect, setSecondSelect, select1, select2, children }) {
   const [showSelect, setShowSelect] = useState(0);
 

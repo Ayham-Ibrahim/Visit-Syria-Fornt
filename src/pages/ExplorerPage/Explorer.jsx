@@ -14,12 +14,14 @@ const Explorer = () => {
     console.log('cityNames', cityNames);
 
     const sortByListLandmarks = [
+        { label: 'ترتيب حسب', value: null },
         { label: 'ID', value: 'id' },
         { label: 'الاسم', value: 'name' },
         { label: 'المحافظة', value: 'city' },
         { label: 'الموقع', value: 'location' },
     ];
     const sortByListHotelsRestorants = [
+        { label: 'ترتيب حسب', value: null },
         { label: 'ID', value: 'id' },
         { label: 'الاسم', value: 'name' },
         { label: 'المحافظة', value: 'city_name' },
@@ -35,7 +37,6 @@ const Explorer = () => {
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
-        console.log("ffffffff");
     };
 
     //_______________________________________
@@ -57,7 +58,7 @@ const Explorer = () => {
                 section === "hotels" ? "hotels" : "landmarks" || 'restaurants/page/1'
         try {
             setLoading(false);
-            const response = await exploreServices.getAllExploreData(apiName, currentPage, (selectedCity != "" ? selectedCity : null), (sortBy != "" ? sortBy : null));
+            const response = await exploreServices.getAllExploreData(apiName, currentPage, (selectedCity != "" ? (selectedCity === "كامل القطر" ? null : selectedCity) : null), (sortBy != "" ? sortBy : null));
             console.log('response', response);
             setCards(response.data);
             console.log('cards', cards);
@@ -70,6 +71,7 @@ const Explorer = () => {
     };
     useEffect(() => {
         console.log('currentPage', currentPage);
+        setCurrentPage(1);
         getAllData();
     }, [section]);
 
@@ -108,8 +110,8 @@ const Explorer = () => {
         <div className="position-relative">
             <PageLayout
                 img={img}
-                options1={cityNames}
-                options2={(section === 'lands'? sortByListLandmarks:sortByListHotelsRestorants )}
+                options1={["كامل القطر", ...cityNames]}
+                options2={(section === 'lands' ? sortByListLandmarks : sortByListHotelsRestorants)}
                 setFirstSelect={setSelect1}
                 setSecondSelect={setSelect2}
                 select1={select1}

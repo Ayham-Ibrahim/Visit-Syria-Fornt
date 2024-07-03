@@ -13,15 +13,17 @@ function AboutPage() {
   const { section } = useParams();
 
   console.log(section);
-  const [singleAboutItem, setSingleAboutItem] = useState();
+  const [aboutList, setAboutList] = useState([]);
+  const [singleAbout, setSingleAbout] = useState();
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState([]);
   const [category, setCategory] = useState('السياحة');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalCategoryPages, setTotalCategoryPages] = useState(5);
 
   const handlePageChange = (number) => {
-    setCurrentPage(number);
+    setPageNumber(number);
   };
 
 
@@ -29,9 +31,9 @@ function AboutPage() {
     setLoading(true);
     try {
       setLoading(false);
-      const response = await aboutservices.getAllAboutData(currentPage, category);
-      setSingleAboutItem(response.data[0]);
-      setTotalPages(response.pagination.total_pages);
+      const response = await aboutservices.getAllAboutData(1, category);
+      setAboutList(response.data);
+      setTotalCategoryPages(response.pagination.count);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -66,31 +68,39 @@ function AboutPage() {
         setCategory(' السياحة');
 
     }
-    setCurrentPage(1);
+    setPageNumber(1);
     console.log('loading', loading);
   }, [section]);
 
   useEffect(()=>{
     console.log('category', category);
     getAllCategoryData();
+    setSingleAbout(null);
   },[category])
 
 
 
   useEffect(() => {
-    console.log('singleAboutItemafter', singleAboutItem);
-   
-    if (singleAboutItem) {
-      setImages(singleAboutItem.images.map((str) => mainURL + str));
+    setLoading(true);
+    setSingleAbout(aboutList[pageNumber-1]);
+    console.log('aboutListafter', aboutList);
+
+  }, [aboutList]);
+
+  useEffect(() => {
+    setLoading(true);
+
+    console.log('singleAbout', singleAbout);
+    if (singleAbout) {
+      setImages(singleAbout.images.map((str) => mainURL + str));
     }
     setLoading(false);
-  }, [singleAboutItem]);
-
+  }, [singleAbout])
 
 
   useEffect(() => {
-    getAllCategoryData();
-  }, [currentPage]);
+    setSingleAbout(aboutList[pageNumber-1]);
+  }, [pageNumber]);
 
   
   useEffect(() => {
@@ -100,12 +110,12 @@ function AboutPage() {
 
   return (
     <div className="BY_AboutSyria">
-      {!loading && singleAboutItem &&
-        <PageLayout img={(singleAboutItem ? mainURL + singleAboutItem.main_image : Img)}>
+      {!loading && singleAbout &&
+        <PageLayout img={(singleAbout ? mainURL + singleAbout.main_image : Img)}>
 
           <PlaceDetails
-            name={singleAboutItem.title}
-            description={[<><br /></>, singleAboutItem.content.split('.').join('.\n\n').split('\n').map((line, index) => (
+            name={singleAbout.title}
+            description={[<><br /></>, singleAbout.content.split('.').join('.\n\n').split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
                 <br />
@@ -114,13 +124,13 @@ function AboutPage() {
             locationVisible={false}
             starVisible={false}
           />
-          <ImagesGallery images={singleAboutItem.images.map((str) => mainURL + str)} />
+          <ImagesGallery images={singleAbout.images.map((str) => mainURL + str)} />
 
           <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute ' >
-            {Array.from({ length: totalPages }, (_, index) => (
+            {Array.from({ length: totalCategoryPages }, (_, index) => (
               <div
                 key={index}
-                className={`${currentPage == index + 1 ? 'active' : ''}`}
+                className={`${pageNumber == index + 1 ? 'active' : ''}`}
                 onClick={() => handlePageChange(index + 1)}
               />
             ))}

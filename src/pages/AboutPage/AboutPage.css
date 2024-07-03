@@ -1,17 +1,14 @@
-.BY_AboutSyria{ 
-    position: relative;
-    
-   
+.BY_AboutSyria .BY_pginationSection{
+    padding: 20px;
 }
-.buttons-slider{
+.BY_AboutSyria .BY_pginationSection .buttons-slider{
     bottom: 119px;
-    background-color: aqua;
     width: 100%;
     max-width: 1200px;
     display: flex;
     justify-self:center ;
 }
-.buttons-slider div {
+.BY_AboutSyria .BY_pginationSection  .buttons-slider div {
     cursor: pointer;
     width: 63.76px;
     height: 12.06px;
@@ -20,7 +17,7 @@
     transition: .5s ease;
     /* transform: translateX(-50%); */
 }
-.buttons-slider div.active {
+.BY_AboutSyria .BY_pginationSection  .buttons-slider div.active {
     width: 103.61px;
     background-color: rgba(130, 203, 178, 1);
 }

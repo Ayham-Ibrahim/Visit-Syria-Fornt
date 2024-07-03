@@ -70,16 +70,16 @@ function AboutPage() {
     console.log('loading', loading);
   }, [section]);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log('category', category);
     getAllCategoryData();
-  },[category])
+  }, [category])
 
 
 
   useEffect(() => {
     console.log('singleAboutItemafter', singleAboutItem);
-   
+
     if (singleAboutItem) {
       setImages(singleAboutItem.images.map((str) => mainURL + str));
     }
@@ -92,7 +92,7 @@ function AboutPage() {
     getAllCategoryData();
   }, [currentPage]);
 
-  
+
   useEffect(() => {
     if (images)
       console.log("images list", images);
@@ -116,14 +116,16 @@ function AboutPage() {
           />
           <ImagesGallery images={singleAboutItem.images.map((str) => mainURL + str)} />
 
-          <div className='buttons-slider desktop d-flex justify-content-center gap-3 position-absolute ' >
-            {Array.from({ length: totalPages }, (_, index) => (
-              <div
-                key={index}
-                className={`${currentPage == index + 1 ? 'active' : ''}`}
-                onClick={() => handlePageChange(index + 1)}
-              />
-            ))}
+          <div className='BY_pginationSection'>
+            <div className='buttons-slider desktop d-flex justify-content-center gap-3' >
+              {Array.from({ length: totalPages }, (_, index) => (
+                <div
+                  key={index}
+                  className={`${currentPage == index + 1 ? 'active' : ''}`}
+                  onClick={() => handlePageChange(index + 1)}
+                />
+              ))}
+            </div>
           </div>
         </PageLayout>
       }

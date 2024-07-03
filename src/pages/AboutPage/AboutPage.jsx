@@ -6,16 +6,17 @@ import * as aboutservices from '../../helpers/AboutSyriaServices/AboutSyriaServi
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import PlaceDetails from '../../shared/PlaceDetails/PlaceDetails';
+import PhotoSlider from '../../shared/PhotoSlider/PhotoSlider';
+
 
 function AboutPage() {
-
   const { section } = useParams();
 
   console.log(section);
   const [aboutList, setAboutList] = useState([]);
   const [singleAbout, setSingleAbout] = useState();
   const [loading, setLoading] = useState(false);
-
+  const [images, setImages] = useState([]);
   const getAllData = async () => {
     setLoading(true);
     try {
@@ -66,9 +67,18 @@ function AboutPage() {
 
   useEffect(() => {
     console.log('singleAbout', singleAbout);
-    if (singleAbout)
+    if (singleAbout) {
       console.log("tttttt", singleAbout.content.split(".").join('.\n\n'));
+      console.log("immm", singleAbout.images.map((str) => mainURL + str));
+      setImages(singleAbout.images.map((str) => mainURL + str));
+
+    }
   }, [singleAbout])
+
+  useEffect(() => {
+    if(images)
+    console.log("immm", images);
+  }, [images])
 
   return (
     <>
@@ -76,7 +86,7 @@ function AboutPage() {
         <PageLayout img={(singleAbout ? mainURL + singleAbout.main_image : Img)}>
           <PlaceDetails
             name={singleAbout.title}
-            description={[<><br/></>,singleAbout.content.split('.').join('.\n\n').split('\n').map((line, index) => (
+            description={[<><br /></>, singleAbout.content.split('.').join('.\n\n').split('\n').map((line, index) => (
               <React.Fragment key={index}>
                 {line}
                 <br />
@@ -85,8 +95,11 @@ function AboutPage() {
             locationVisible={false}
             starVisible={false}
           />
-          
+          {/* <PhotoSlider
+            imgs={singleAbout.images.map((str) => mainURL + str)} /> */}
 
+          {/* <PhotoSlider
+            imgs={images} /> */}
         </PageLayout>
       }
     </>

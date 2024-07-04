@@ -1,12 +1,14 @@
 import img from '../../assets/images/Rectangle 140.png'
 import Card from "../../shared/Card/Card"
 import { useEffect, useState } from "react"
-import axios from "axios"
-import { useLocation, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import './Explorer.css'
 import PageLayout from "../../shared/PageLayout/PageLayout"
 import { mainURL } from '../../helpers/ExploreServices/ExploreURLs'
 import * as exploreServices from '../../helpers/ExploreServices/ExploreServices'
+import { hotelsHero, restaurantsHero, landmarksHero } from'../../helpers/ExploreServices/ExploreMainHero';
+import Button from '../../shared/Button/Button'
+
 const Explorer = () => {
     const [cards, setCards] = useState([]);
     const { cities, cityNames, isLoadingCities } = exploreServices.useFetchCities();
@@ -106,10 +108,39 @@ const Explorer = () => {
         getAllData();
     }, [currentPage, selectedCity, sortBy]);
 
+
+    const navigate = useNavigate();
+
+    const handleReadMoreClick = (id) => {
+      let path;
+      switch (section) {
+        case 'hotels':
+          path = '/hotels';
+          break;
+        case 'resturants':
+          path = '/resturants';
+          break;
+        case 'lands':
+          path = '/lands';
+          break;
+        default:
+          path = '/';
+      }
+  
+    //   navigate(path+`/${id}`);
+    };
     return (
         <div className="position-relative">
             <PageLayout
-                img={img}
+                img={
+                    section === 'hotels'
+                      ? hotelsHero
+                      : section === 'resturants'
+                      ? restaurantsHero
+                      : section === 'lands'
+                      ? landmarksHero
+                      : img
+                  }
                 options1={["كامل القطر", ...cityNames]}
                 options2={(section === 'lands' ? sortByListLandmarks : sortByListHotelsRestorants)}
                 setFirstSelect={setSelect1}
@@ -123,7 +154,8 @@ const Explorer = () => {
                 {!loading && section === 'lands' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={'أقرأ المزيد'}
+                        button={<Button btnText="اقرأ المزيد" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)}/>}
+                        
                         image={mainURL + card.internal_image}
                         location={card.city}
                         price={""}
@@ -136,7 +168,7 @@ const Explorer = () => {
                 {!loading && section === 'hotels' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={'احجز الآن'}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)}/>}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.price}
@@ -149,7 +181,7 @@ const Explorer = () => {
                 {!loading && section === 'resturants' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={'احجز الآن'}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)}/>}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.table_price}

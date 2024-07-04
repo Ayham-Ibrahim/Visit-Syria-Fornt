@@ -45,7 +45,7 @@ const ImagesGallery = ({ images }) => {
                     </div>
                 )}
                 <div className="BY_SmallScreenOnly">
-                    <div class="slider">
+                    <div className="slider">
                         <div className="slides">
                             <div className="slide">
                                 <img src={images[0]} alt="Gallery" />

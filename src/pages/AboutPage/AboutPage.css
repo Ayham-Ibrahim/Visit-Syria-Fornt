@@ -15,9 +15,19 @@
     border-radius: 13px;
     background-color: rgba(217, 217, 217, 1);
     transition: .5s ease;
-    /* transform: translateX(-50%); */
 }
 .BY_AboutSyria .BY_pginationSection  .buttons-slider div.active {
     width: 103.61px;
     background-color: rgba(130, 203, 178, 1);
+}
+
+@media screen and (max-width:992px){
+    .BY_AboutSyria .BY_pginationSection  .buttons-slider div {
+        height: 10.06px;
+        width: 53.76px;
+    }
+
+    .BY_AboutSyria .BY_pginationSection  .buttons-slider div.active {
+        width: 90.61px;
+    }
 }

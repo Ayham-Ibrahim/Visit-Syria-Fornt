@@ -98,7 +98,7 @@
 }
 
 .BY_MainCard .content_section .bottom_section {
-  height: 36px;
+  height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -134,4 +134,12 @@
 
 .BY_MainCard .content_section .bottom_section .location i {
   font-size: 20px;
+}
+
+.BY_CardsButtons {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: ltr;
 }

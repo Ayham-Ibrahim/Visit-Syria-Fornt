@@ -1,6 +1,8 @@
 .placedetails {
   margin: 30px auto;
-  width: 60vw;
+  max-width: 1200px;
+  /* width: 60vw; */
+  width: 100%;
   text-align: right;
   padding: 0 50px;
 }

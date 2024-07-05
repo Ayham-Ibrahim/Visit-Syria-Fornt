@@ -186,14 +186,17 @@
 }
 
 .explorer .explorer-cards {
-    background-color: white;
+    background-color: var(--off_white_background);
 }
 
-.explorer .explorer-cards-grid {
-    padding: 92px 110px 180px;
+.explorer .explorer-cards-grid {    
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-    gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+    padding: 92px 50px 220px;
 }
 
 .explorer .mobile-select {
@@ -273,5 +276,6 @@
     .explorer .tabs-container {
         flex-direction: column;
     }
+
 
 }

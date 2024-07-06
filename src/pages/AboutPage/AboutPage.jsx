@@ -5,7 +5,7 @@ import { mainURL } from '../../helpers/AboutSyriaServices/AboutSyriaURLs';
 import * as aboutservices from '../../helpers/AboutSyriaServices/AboutSyriaServices'
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import PlaceDetails from '../../shared/PlaceDetails/PlaceDetails';
+import AboutSyriaDetails from '../../shared/AboutSyriaDetails/AboutSyriaDetails';
 import './AboutPage.css'
 import ImagesGallery from '../../components/ImagesGallery/ImagesGallery';
 
@@ -103,7 +103,7 @@ function AboutPage() {
       {!loading && singleAboutItem &&
         <PageLayout img={(singleAboutItem ? mainURL + singleAboutItem.main_image : Img)}>
 
-          <PlaceDetails
+          <AboutSyriaDetails
             name={singleAboutItem.title}
             description={[<><br /></>, singleAboutItem.content.split('.').join('.\n\n').split('\n').map((line, index) => (
               <React.Fragment key={index}>
@@ -111,8 +111,6 @@ function AboutPage() {
                 <br />
               </React.Fragment>
             )), " ... المزيد"]}
-            locationVisible={false}
-            starVisible={false}
           />
           <ImagesGallery images={singleAboutItem.images.map((str) => mainURL + str)} />
 

@@ -1,0 +1,68 @@
+.BY_AboutSyriaDetails {
+  margin: 30px auto;
+  max-width: 1200px;
+  width: 100%;
+  text-align: right;
+  padding: 0 50px;
+}
+.BY_AboutSyriaDetails .maininfo-es {
+  display: flex;
+  direction: rtl;
+  margin-bottom: 10px;
+  padding-left: 25px;
+}
+
+.BY_AboutSyriaDetails .maininfo-es .rightinfo-es {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding-top: 30px;
+}
+
+.BY_AboutSyriaDetails .maininfo-es .rightinfo-es h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+
+
+.BY_AboutSyriaDetails .maininfo-es .rightinfo-es p {
+  font-size: 10px;
+  font-weight: 600;
+  direction: rtl;
+}
+
+.BY_AboutSyriaDetails .maininfo-es .rightinfo-es p i {
+  padding-right: 5px;
+}
+
+
+.BY_AboutSyriaDetails .placedescription {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 30px;
+}
+
+@media (max-width: 768px) {
+  .BY_AboutSyriaDetails .maininfo-es .rightinfo-es {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+
+  .BY_AboutSyriaDetails .maininfo-es .rightinfo-es h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+
+  .BY_AboutSyriaDetails .placedescription {
+    font-size: 15px;
+    margin: auto;
+    display: flex;
+    direction: rtl;
+  }
+}

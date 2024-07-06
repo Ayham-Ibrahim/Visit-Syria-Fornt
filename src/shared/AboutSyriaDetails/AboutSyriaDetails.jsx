@@ -1,7 +1,6 @@
 import React from "react";
 import "./AboutSyriaDetails.css";
-import { IoLocationOutline } from "react-icons/io5";
-import { MdStarRate } from "react-icons/md";
+
 
 const AboutSyriaDetails = ({ name, description}) => {
   return (

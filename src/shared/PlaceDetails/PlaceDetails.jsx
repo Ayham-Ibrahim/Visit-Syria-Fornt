@@ -3,7 +3,7 @@ import "./PlaceDetails.css";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdStarRate } from "react-icons/md";
 
-const PlaceDetails = ({ name, location, logo, description, starVisible = true, locationVisible = true }) => {
+const PlaceDetails = ({ name, location, logo, description }) => {
   // const renderStars = () => {
   //   let stars = [];
   //   for (let i = 1; i <= 5; i++) {
@@ -25,24 +25,23 @@ const PlaceDetails = ({ name, location, logo, description, starVisible = true, l
           </div>
 
           <div className="stars-location-es">
-            {starVisible &&
-              <div className="star-rating">
-                {/* {renderStars()} */}
-                <MdStarRate />
-                <MdStarRate />
-                <MdStarRate />
-                <MdStarRate />
-                <MdStarRate />
-              </div>}
-            {locationVisible &&
-              <div className="placelocation">
-                <p>
-                  <i>
-                    <IoLocationOutline />
-                  </i>
-                  {location}
-                </p>
-              </div>}
+
+            <div className="star-rating">
+              {/* {renderStars()} */}
+              <MdStarRate />
+              <MdStarRate />
+              <MdStarRate />
+              <MdStarRate />
+              <MdStarRate />
+            </div>
+            <div className="placelocation">
+              <p>
+                <i>
+                  <IoLocationOutline />
+                </i>
+                {location}
+              </p>
+            </div>
 
           </div>
         </div>

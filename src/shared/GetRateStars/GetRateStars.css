@@ -1,0 +1,23 @@
+.star-active{
+    color: var(--main-green);
+}
+.star-nonactive{
+    color: var(--light_gray_icons);
+}
+.rating-comp{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+@media (max-width: 768px){
+    .rating-comp svg{
+        width: 15px;
+        height: 15px;
+        margin-bottom: 0;
+    }
+    .rating-comp {
+        margin-bottom: 0;
+    }
+}

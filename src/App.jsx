@@ -39,35 +39,35 @@ import img8 from './assets/images/slider3.jpg'
 import BlogDetails from './components/PlaceDetails/BlogDetails/BlogDetails'
 import PlaceDetailsLandmark from './components/PlaceDetails/PlaceDetailsLandmark/PlaceDetailsLandmark'
 function App() {
-  const arrayImages = [img1, img2, img3, img4, img7, img5, img6, img8];
-  const services = [
+  // const arrayImages = [img1, img2, img3, img4, img7, img5, img6, img8];
+//   const services = [
     
-    {
-        title:'مسبح و أنشطة أطفال',
-        icon:<LiaSwimmingPoolSolid />,
-    },
-    {
-        title:'انتظار مجاني للسيارات',
-        icon:<CiParking1 />,
-    },
-    {
-        title:'انترنت عالي السرعة',
-        icon:<IoWifiSharp />,
-    },
-    {
-        title:'خدمة توصيل من و إلى المطار',
-        icon:<BsAirplane />,
-    },
-]
-  const restuarant = {
-    title: 'مطعم وردة الشام',
-    location: 'اللاذقية',
-    rating: 4,
-    logo : restaurantCover ,
-    description : 'انقل ذوقك إلى قلب الشرق الأوسط في مطعمنا، واحة الطهي حيث تجتمع التقاليد مع الابتكار. ادخل إلى أجواء مزينة بألوان نابضة بالحياة وأنماط معقدة، تستحضر النسيج الثقافي الغني للمنطقة.',
-    images : arrayImages,
-    services: services,
-  }
+//     {
+//         title:'مسبح و أنشطة أطفال',
+//         icon:<LiaSwimmingPoolSolid />,
+//     },
+//     {
+//         title:'انتظار مجاني للسيارات',
+//         icon:<CiParking1 />,
+//     },
+//     {
+//         title:'انترنت عالي السرعة',
+//         icon:<IoWifiSharp />,
+//     },
+//     {
+//         title:'خدمة توصيل من و إلى المطار',
+//         icon:<BsAirplane />,
+//     },
+// ]
+//   const restuarant = {
+//     title: 'مطعم وردة الشام',
+//     location: 'اللاذقية',
+//     rating: 4,
+//     logo : restaurantCover ,
+//     description : 'انقل ذوقك إلى قلب الشرق الأوسط في مطعمنا، واحة الطهي حيث تجتمع التقاليد مع الابتكار. ادخل إلى أجواء مزينة بألوان نابضة بالحياة وأنماط معقدة، تستحضر النسيج الثقافي الغني للمنطقة.',
+//     images : arrayImages,
+//     services: services,
+//   }
  
   return (
     <>
@@ -93,7 +93,7 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/hotel-details/:id' element={<PlaceDetailsHotel />} />
       <Route path='/restaurant-details/:id' element={<PlaceDetailsRestaurant />} />
-      <Route path='/blog-details/:id' element={<BlogDetails backgroundImage={restuarantcover} title={restuarant.title}  location={restuarant.location} description={restuarant.description}  images={restuarant.images}  />} />
+      <Route path='/blog-details/:id' element={<BlogDetails />} />
       <Route path='/landmark-details/:id' element={<PlaceDetailsLandmark/>} />
       <Route path='/*' element={<Navigate to={'/error'}/>} />
       <Route path='/error' element={'error'} />

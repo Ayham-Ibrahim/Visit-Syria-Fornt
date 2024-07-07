@@ -5,7 +5,7 @@ import {
   marksHero,
   natureHero,
 } from "../../helpers/BlogServices/BlogHeroImages";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as blogServices from "./../../helpers/BlogServices/BlogService";
 import BlogCard from "../../components/BlogCard/BlogCard";
 import Button from "../../shared/Button/Button";
@@ -16,6 +16,7 @@ function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("الطبيعة");
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -61,12 +62,13 @@ function BlogPage() {
               title={blog.title}
               location={blog.city}
               brief={blog.content}
-              image={mainURL+blog.main_image}
+              image={mainURL + blog.main_image}
               button={
                 <Button
                   btnText="اقرأ المزيد"
                   radius="10px"
                   className="BY_CardsButtons"
+                  onClick={() => navigate(`/blog-details/${blog.id}`)}
                 />
               }
             />

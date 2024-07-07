@@ -16,7 +16,7 @@ import { IoWifiSharp } from "react-icons/io5";
 import { useParams } from "react-router-dom"
 import * as restaurantServices from '../../../helpers/RestaurantsServices/RestaurantsServices';
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
-
+import React from 'react'
 function PlaceDetailsRestaurant() {
 
     const { id } = useParams();
@@ -91,7 +91,13 @@ function PlaceDetailsRestaurant() {
                             </div>
                         </div>
                         <div className="place-description">
-                            <p className='m-0'>{restuarant.secondary_description}</p>
+                            <p className='m-0'> {restuarant.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
+                                <React.Fragment key={index}>
+                                    {line}
+                                    <br />
+                                </React.Fragment>
+                            ))}</p>
+                           
                         </div>
                         <div className="place-gallery">
                             <PhotoSlider imgs={restuarantImages} />

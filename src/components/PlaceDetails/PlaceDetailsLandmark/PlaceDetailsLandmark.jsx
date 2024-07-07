@@ -6,6 +6,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import * as landmarkServices from '../../../helpers/LandMarksServices/LandMarksServices';
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
+import React from 'react'
+
 function PlaceDetailsLandmark() {
 
 
@@ -60,7 +62,13 @@ function PlaceDetailsLandmark() {
                             </div>
                         </div>
                         <div className="place-description">
-                            <p className='m-0'>{landmark.secondary_description}</p>
+                            <p className='m-0'>{landmark.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
+                                <React.Fragment key={index}>
+                                    {line}
+                                    <br />
+                                </React.Fragment>
+                            ))}</p>
+
                         </div>
                         <div className="place-gallery">
                             <PhotoSlider imgs={landmarkImages} />

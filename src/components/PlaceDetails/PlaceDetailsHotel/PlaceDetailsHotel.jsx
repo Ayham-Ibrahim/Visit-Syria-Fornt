@@ -15,16 +15,17 @@ import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { CiParking1 } from "react-icons/ci";
 import { BsAirplane } from "react-icons/bs";
 import { TbHierarchy3 } from "react-icons/tb";
+import React from 'react'
 import * as hotelSrevices from '../../../helpers/HotelsServices/HotelsServices';
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
 
 function PlaceDetailsHotel() {
-    const [selectedValue, setSelectedValue] = useState('Option 1');
-    const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
+    // const [selectedValue, setSelectedValue] = useState('Option 1');
+    // const handleChange = (event) => {
+    //     setSelectedValue(event.target.value);
+    // };
     const hotelServices = [
         {
             title: '/إقامة / غرف و أجنحة',
@@ -94,7 +95,7 @@ function PlaceDetailsHotel() {
         <>
             {!loading && hotel &&
                 <div className='place-details-hotel'>
-                    <div className="place-hero" style={{ backgroundImage: `url(${mainURL+ hotel.cover_image})` }}></div>
+                    <div className="place-hero" style={{ backgroundImage: `url(${mainURL + hotel.cover_image})` }}></div>
                     <div className="details-content">
                         <div className="place-header">
                             <div className="place-title">
@@ -110,11 +111,19 @@ function PlaceDetailsHotel() {
                                 </div>
                             </div>
                             <div className="place-logo">
-                                <img src={mainURL+ hotel.logo} alt="place-logo" />
+                                <img src={mainURL + hotel.logo} alt="place-logo" />
                             </div>
                         </div>
                         <div className="place-description">
-                            <p className='m-0'>{hotel.secondary_description}</p>
+                            <p className='m-0'>   
+                                {hotel.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
+                                <React.Fragment key={index}>
+                                    {line}
+                                    <br />
+                                </React.Fragment>
+                            ))}</p>
+
+
                         </div>
                         <div className="place-gallery">
                             <PhotoSlider imgs={hotelImages} />

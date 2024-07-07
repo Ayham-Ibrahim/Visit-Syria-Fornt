@@ -167,7 +167,7 @@ const Explorer = () => {
                     <Card
                         brief={card.primary_description}
                         button={<Button btnText="اقرأ المزيد" radius="10px" className="BY_CardsButtons" onClick={() => handleReadMoreClick(card.id)} />}
-
+                        onclick={() => handleReadMoreClick(card.id)}
                         image={mainURL + card.internal_image}
                         location={card.city}
                         price={""}
@@ -180,7 +180,12 @@ const Explorer = () => {
                 {!loading && section === 'hotels' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={() => handleReadMoreClick(card.id)} />}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons"
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                navigate(`/booking`);
+                            }} />}
+                        onclick={() => handleReadMoreClick(card.id)}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.price}
@@ -193,7 +198,12 @@ const Explorer = () => {
                 {!loading && section === 'resturants' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={() => handleReadMoreClick(card.id)} />}
+                        onclick={() => handleReadMoreClick(card.id)}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons"
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                navigate('/booking');
+                            }} />}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.table_price}

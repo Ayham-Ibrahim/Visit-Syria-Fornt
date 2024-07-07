@@ -13,7 +13,7 @@ import { CiParking1 } from "react-icons/ci";
 import { BsAirplane } from "react-icons/bs";
 import { IoWifiSharp } from "react-icons/io5";
 
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import * as restaurantServices from '../../../helpers/RestaurantsServices/RestaurantsServices';
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
 import React from 'react'
@@ -23,6 +23,7 @@ function PlaceDetailsRestaurant() {
     const [restuarant, setRestuarant] = useState();
     const [loading, setLoading] = useState(false);
     const [restuarantImages, setImages] = useState([]);
+    const navigate = useNavigate();
 
     const restuarantServices = [
         {
@@ -97,7 +98,7 @@ function PlaceDetailsRestaurant() {
                                     <br />
                                 </React.Fragment>
                             ))}</p>
-                           
+
                         </div>
                         <div className="place-gallery">
                             <PhotoSlider imgs={restuarantImages} />
@@ -113,7 +114,7 @@ function PlaceDetailsRestaurant() {
                                     <FaBookOpen />
                                 </div>
                                 <div className="book-button position-absolute">
-                                    <Button btnText="إحجز الآن" radius={9} />
+                                    <Button btnText="إحجز الآن" radius={9} onClick={() => navigate(`/booking`)} />
                                 </div>
                             </div>
                         </div>

@@ -17,7 +17,7 @@ import { BsAirplane } from "react-icons/bs";
 import { TbHierarchy3 } from "react-icons/tb";
 import React from 'react'
 import * as hotelSrevices from '../../../helpers/HotelsServices/HotelsServices';
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
 
@@ -65,6 +65,7 @@ function PlaceDetailsHotel() {
     const [hotel, setHotel] = useState();
     const [loading, setLoading] = useState(false);
     const [hotelImages, setImages] = useState([]);
+    const navigate = useNavigate();
 
 
     const gethotel = async () => {
@@ -115,13 +116,13 @@ function PlaceDetailsHotel() {
                             </div>
                         </div>
                         <div className="place-description">
-                            <p className='m-0'>   
+                            <p className='m-0'>
                                 {hotel.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
-                                <React.Fragment key={index}>
-                                    {line}
-                                    <br />
-                                </React.Fragment>
-                            ))}</p>
+                                    <React.Fragment key={index}>
+                                        {line}
+                                        <br />
+                                    </React.Fragment>
+                                ))}</p>
 
 
                         </div>
@@ -154,7 +155,8 @@ function PlaceDetailsHotel() {
                                     <FaImage />
                                 </div>
                                 <div className="book-button position-absolute">
-                                    <Button btnText="إحجز الآن" radius={9} />
+                                    <Button btnText="إحجز الآن" radius={9}
+                                        onClick={() => navigate(`/booking`)} />
                                 </div>
                             </div>
 

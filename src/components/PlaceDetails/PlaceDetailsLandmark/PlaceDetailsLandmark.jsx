@@ -10,7 +10,6 @@ import React from 'react'
 
 function PlaceDetailsLandmark() {
 
-
     const { id } = useParams();
     const [landmark, setLandmark] = useState();
     const [loading, setLoading] = useState(false);

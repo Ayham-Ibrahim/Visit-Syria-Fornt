@@ -1,8 +1,22 @@
+
     .book-page {
+        margin-top: 140px;
+        margin-bottom: 160px;
+
+    }
+    .book-page .title-reservation-Ay {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        direction: rtl;
+    }
+    .book-page .row {
+        direction: rtl;
         display: flex;
         justify-content: center;
-        align-items: center;
-        gap: 33.76px;
+        flex-direction: row;
+        align-items: top;
+        margin-top: 0px;
     }
     .book-form {
         direction: rtl;
@@ -25,8 +39,8 @@
     .book-page .card {
         max-width: 400px;
         height: 491px;
-        margin: 20px auto;
         padding: 21px;
+        /* margin: auto; */
         border: 1px solid #ddd;
         border-radius: 5px;
         direction: rtl;
@@ -146,4 +160,27 @@
     }
     .book-form button:hover {
         background-color: var(--main_green);
+    }
+
+    @media (max-width:992px) {
+        .book-page .all-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: top;
+        }
+        .book-page .row .col-8,
+        .book-page .row .col-4{
+            width: 100%;
+        }
+
+        .book-page .card {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+
+        .book-page .title-reservation-Ay {
+            font-size: 22px;
+        }
+    
     }

@@ -94,7 +94,7 @@ function App() {
       <Route path='/hotel-details/:id' element={<PlaceDetailsHotel backgroundImage={imagecover} />} />
       <Route path='/restaurant-details/:id' element={<PlaceDetailsRestaurant backgroundImage={restuarantcover} restaurantName={restuarant.title} logo={restuarant.logo} location={restuarant.location} description={restuarant.description} rating={restuarant.rating} images={restuarant.images} services={restuarant.services} />} />
       <Route path='/blog-details/:id' element={<BlogDetails backgroundImage={restuarantcover} title={restuarant.title}  location={restuarant.location} description={restuarant.description}  images={restuarant.images}  />} />
-      <Route path='/landmark-details/:id' element={<PlaceDetailsLandmark backgroundImage={restuarantcover} landmarkName={restuarant.title}  location={restuarant.location} rating={2} description={restuarant.description}  images={restuarant.images}  />} />
+      <Route path='/landmark-details/:id' element={<PlaceDetailsLandmark/>} />
       <Route path='/*' element={<Navigate to={'/error'}/>} />
       <Route path='/error' element={'error'} />
     </Routes>

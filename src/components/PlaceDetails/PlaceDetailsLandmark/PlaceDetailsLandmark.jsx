@@ -3,10 +3,11 @@ import { CiLocationOn } from "react-icons/ci";
 import PhotoSlider from './../../../shared/PhotoSlider/PhotoSlider'
 import GetRateStars from '../../../shared/GetRateStars/GetRateStars';
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import * as landmarkServices from '../../../helpers/LandMarksServices/LandMarksServices';
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
 function PlaceDetailsLandmark() {
+
 
     const { id } = useParams();
     const [landmark, setLandmark] = useState();
@@ -64,7 +65,7 @@ function PlaceDetailsLandmark() {
                         <div className="place-gallery">
                             <PhotoSlider imgs={landmarkImages} />
                         </div>
-                        <div className='green-line' ></div>
+                        <div className='green-line'></div>
                     </div>
 
                 </div >
@@ -74,31 +75,3 @@ function PlaceDetailsLandmark() {
 }
 
 export default PlaceDetailsLandmark
-
-{/* <div className='place-details-landmark'>
-<div className="place-hero" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
-<div className="details-content">
-    <div className="place-header">
-        <div className="place-title">
-            <h1>{landmarkName}</h1>
-            <div className="rate-location-container">
-                <div className="place-rating-container">
-                    <GetRateStars rating={rating} />
-                </div>
-                <div className="place-location">
-                    <CiLocationOn />
-                    <p className='m-0'>{location}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div className="place-description">
-        <p className='m-0'>{description}</p>
-    </div>
-    <div className="place-gallery">
-        <PhotoSlider imgs={images} />
-    </div>
-    <div className='green-line' ></div>
-</div>
-
-</div > */}

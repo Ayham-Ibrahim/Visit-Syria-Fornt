@@ -26,20 +26,20 @@ function PlaceDetailsRestaurant() {
 
     const restuarantServices = [
         {
-            title:'مسبح و أنشطة أطفال',
-            icon:<LiaSwimmingPoolSolid />,
+            title: 'مسبح و أنشطة أطفال',
+            icon: <LiaSwimmingPoolSolid />,
         },
         {
-            title:'انتظار مجاني للسيارات',
-            icon:<CiParking1 />,
+            title: 'انتظار مجاني للسيارات',
+            icon: <CiParking1 />,
         },
         {
-            title:'انترنت عالي السرعة',
-            icon:<IoWifiSharp />,
+            title: 'انترنت عالي السرعة',
+            icon: <IoWifiSharp />,
         },
         {
-            title:'خدمة توصيل من و إلى المطار',
-            icon:<BsAirplane />,
+            title: 'خدمة توصيل من و إلى المطار',
+            icon: <BsAirplane />,
         },
     ]
 
@@ -82,7 +82,7 @@ function PlaceDetailsRestaurant() {
                                     </div>
                                     <div className="place-location">
                                         <CiLocationOn />
-                                        <p className='m-0'>{restuarant.city}</p>
+                                        <p className='m-0'>{restuarant.city + " - " + restuarant.location}</p>
                                     </div>
                                 </div>
                             </div>

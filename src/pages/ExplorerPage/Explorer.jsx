@@ -49,7 +49,6 @@ const Explorer = () => {
 
     console.log(section);
 
-    const to = useNavigate();
 
 
     const getAllData = async () => {
@@ -109,19 +108,19 @@ const Explorer = () => {
         let path;
         switch (section) {
             case 'hotels':
-                path = '/hotels';
+                path = '/hotel-details';
                 break;
             case 'resturants':
-                path = '/resturants';
+                path = '/restaurant-details';
                 break;
             case 'lands':
-                path = '/lands';
+                path = '/landmark-details';
                 break;
             default:
                 path = '/';
         }
 
-        //   navigate(path+`/${id}`);
+        navigate(path + `/${id}`);
     };
 
     const [searchQuery, setSearchQuery] = useState("");
@@ -129,14 +128,14 @@ const Explorer = () => {
 
 
     const searchedCards = searchQuery
-        ?  cards.filter(card =>
+        ? cards.filter(card =>
             card.name.includes(searchQuery.toLowerCase())
         )
         : cards;
 
     useEffect(() => {
         console.log('searchQuery', searchQuery);
-        console.log('searchedCards',searchedCards);
+        console.log('searchedCards', searchedCards);
     }, [searchQuery])
     useEffect(() => {
         setSearchQuery("");
@@ -167,7 +166,7 @@ const Explorer = () => {
                 {!loading && section === 'lands' && searchedCards && searchedCards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="اقرأ المزيد" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)} />}
+                        button={<Button btnText="اقرأ المزيد" radius="10px" className="BY_CardsButtons" onClick={() => handleReadMoreClick(card.id)} />}
 
                         image={mainURL + card.internal_image}
                         location={card.city}
@@ -181,7 +180,7 @@ const Explorer = () => {
                 {!loading && section === 'hotels' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)} />}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={() => handleReadMoreClick(card.id)} />}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.price}
@@ -194,7 +193,7 @@ const Explorer = () => {
                 {!loading && section === 'resturants' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)} />}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={() => handleReadMoreClick(card.id)} />}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.table_price}

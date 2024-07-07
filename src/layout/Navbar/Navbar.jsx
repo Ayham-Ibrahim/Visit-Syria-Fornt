@@ -38,7 +38,7 @@ function Navbar() {
                 <li>
                   <Link
                     to="/recommendations"
-                    className={`  ${
+                    className={`${
                       activeItem === "recommendations" ? "active-nav" : ""
                     }`}
                     onClick={() => handleItemClick("recommendations")}

@@ -1,9 +1,8 @@
 .BY_Hero{
-    height: 90vh;    
+    height: 100vh;    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     font-size: 24px;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -28,8 +27,8 @@
     font-size: 2.25rem;
 }
 .hero-text .explore-button button{
-    width: 270px;
-    height: 55px;
+    width: fit-content !important;
+    padding: 0 1rem;
     border-radius: 7px;
     outline: none;
     color: var(--black_button_text);
@@ -51,24 +50,24 @@
 }
 
 .slider .slide {
-    width: 238.72px;
-    height: 325.83px;
+    width: 200px !important;
+    height: 300px !important;
     border-radius: 38.19px;
     overflow: hidden;
     cursor: pointer;
     border: 7px solid rgba(255, 255, 255, 0.35);
     transition: .5s ease;
     transform: scale(.9);
+    position: relative !important;
 }
 
 .slider .slide-title {
-    position: absolute;
-    left: 50%;
+    width: 200px !important;
+    position: absolute !important;
     bottom: 60px;
-    transform: translateX(-60%);
     z-index: 100;
     color: white !important;
-    text-align: center;
+    text-align: center !important;
     transition: .5s ease;
 }
 
@@ -144,6 +143,19 @@
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
+        transform: translateY(-10%);
+    }
+
+    .hero-text h1 {
+        font-size: 2rem !important;
+    }
+    .hero-text h4 {
+        font-size: 1.5rem !important;
+        margin: -10px 0;
+    }
+
+    .hero-text a button {
+        font-size: 1.2rem !important;
     }
 }
 
@@ -161,5 +173,17 @@
     }
     .slide-title {
         transform: translateX(-50%) !important;
+    }
+    .slider .slide.active {
+        transform: scale(.9);
+        border-color: rgba(141, 211, 187, 0.53);
+    }
+    .slider .slide-title.active {
+        bottom: 60px !important;
+    }
+    .slider .slide-title {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-45%) !important;
     }
 }

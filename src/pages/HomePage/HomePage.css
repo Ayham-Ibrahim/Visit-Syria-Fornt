@@ -46,12 +46,12 @@
 }
 .home-page .public-preif-section .image-syria-map .shape{
     position: relative;
+    z-index: -1;
 }
 .home-page .public-preif-section .image-syria-map .shape-responsive{
     display: none;
 }
-.home-page .public-preif-section .image-syria-map .shape img{
-    
+.home-page .public-preif-section .image-syria-map .shape img{    
     height: 276px;
     width: 746px;
     position: absolute;
@@ -62,11 +62,10 @@
     position : relative;
     height: inherit;
 }
-.home-page .public-preif-section .image-syria-map .syria-map img.syria-sh{
+.home-page .public-preif-section .image-syria-map .syria-map img.syria-sh {
     mix-blend-mode: multiply;
 }
-.home-page .public-preif-section .image-syria-map .syria-map img{
-
+.home-page .public-preif-section .image-syria-map .syria-map img {
     height: 600px;
     width: 700px;
     position: absolute;
@@ -75,10 +74,11 @@
     z-index: 2;
 }
 
-.brief-text-container .brief-title h1{
+.brief-text-container .brief-title h1 {
     font-size: 3rem;
     font-weight: 700;
 }
+
 .brief-text-container .brief-text p{
     font-size: 1.5rem;
     font-weight: 300;
@@ -86,6 +86,7 @@
 }
 .brief-text-container {
     padding-right: 112px;
+    /* margin: 0 auto; */
     display: flex;
     justify-content: center;
     align-items: end;
@@ -359,13 +360,11 @@
         justify-content: center;
         align-items: center;
         flex-direction: column-reverse;
-        
     }
 
 }
 @media (max-width: 410px){
     .home-page .public-preif-section .image-syria-map .syria-map img{
-
         height: 300px;
         width: 350px;
         right:0px;

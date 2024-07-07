@@ -45,7 +45,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="home-blog-card">
+      <div className="home-blog-card mb-5">
         <div className="home-blog-container">
           <div className="home-blog-content">
             <div className="home-blog-image">

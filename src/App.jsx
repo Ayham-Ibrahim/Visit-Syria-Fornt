@@ -11,9 +11,9 @@ import BookPage from './pages/BookPage/BookPage'
 import Navbar from './layout/Navbar/Navbar'
 import RecommendationsPage from './pages/RecommendationsPage/RecommendationsPage'
 import Explorer from './pages/ExplorerPage/Explorer'
-import ExploreBlog from './pages/ExploreBlog/ExploreBlog'
+// import ExploreBlog from './pages/ExploreBlog/ExploreBlog'
 import Register from './components/Register/Register'
-import {  ToastContainer } from 'react-toastify'
+// import {  ToastContainer } from 'react-toastify'
 import HomePage from './pages/HomePage/Homepage'
 
 
@@ -35,7 +35,7 @@ function App() {
       <Route path='/' element={<HomePage/>} />
       <Route path='/explore/:section' element={<Explorer />} />
       <Route path='/about/:section' element={<AboutPage />} />
-      <Route path='/blogs/:section' element={<ExploreBlog />} />
+      <Route path='/blogs/:section' element={<BlogPage />} />
       {/* <Route path='/blog' element={<BlogPage />} /> */}
       <Route path='/booking' element={<BookPage />} />
       <Route path='/recommendations' element={<RecommendationsPage />} />

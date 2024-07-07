@@ -98,3 +98,7 @@
       padding-bottom: 60px;
     }
   }
+
+  .blog-bage-Ay .explorer .explorer-hero .explorer-top-section .search-filter {
+    display: none;
+  }

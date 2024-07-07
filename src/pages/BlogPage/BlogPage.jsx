@@ -1,105 +1,89 @@
-import React, {  useState } from 'react'
-import './BlogPage.css'
-import Hero from '../../components/Hero/Hero'
-import BlogCard from '../../components/BlogCard/BlogCard'
-import Pagination from '../../components/Pagination/Pagination';
+import { useEffect, useState } from "react";
+import "./BlogPage.css";
+import PageLayout from "../../shared/PageLayout/PageLayout";
+import {
+  marksHero,
+  natureHero,
+} from "../../helpers/BlogServices/BlogHeroImages";
+import { useParams } from "react-router-dom";
+import * as blogServices from "./../../helpers/BlogServices/BlogService";
+import BlogCard from "../../components/BlogCard/BlogCard";
+import Button from "../../shared/Button/Button";
+import { mainURL } from "../../helpers/BlogServices/BlogUrl";
+
 function BlogPage() {
+  const { section } = useParams();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState("الطبيعة");
 
-  // this list will be replaced by actual data from API, 
-  let list =
-    [
-      "الطبيعية",
-      "الأثرية",
-      "الثقافية"
-    ];
-
-  // this data will be replaced by actual data from API, 
-  let data = [
-    {
-      id: 1,
-      title: "مدرج بصرى",
-      location: "درعا",
-      brief: "مدرجة بصرى هي مدرج روماني يقع في مدينة بصرى السورية، وهي واحدة من أروع المدرجات الرومانية في العالم. تم بناء المدرج في القرن الأول الميلادي، ويتسع لـ 25 ألف متفرج",
-      image: 'src/assets/images/blog4.jpg',
-    },
-    {
-      id: 2,
-      title: "مدرج بصرى",
-      location: "درعا",
-      brief: "مدرجة بصرى هي مدرج روماني يقع في مدينة بصرى السورية، وهي واحدة من أروع المدرجات الرومانية في العالم. تم بناء المدرج في القرن الأول الميلادي، ويتسع لـ 25 ألف متفرج",
-      image: 'src/assets/images/blog4.jpg',
-    },
-    {
-      id: 3,
-      title: "مدرج بصرى",
-      location: "درعا",
-      brief: "مدرجة بصرى هي مدرج روماني يقع في مدينة بصرى السورية، وهي واحدة من أروع المدرجات الرومانية في العالم. تم بناء المدرج في القرن الأول الميلادي، ويتسع لـ 25 ألف متفرج",
-      image: 'src/assets/images/blog4.jpg',
-    },
-    {
-      id: 4,
-      title: "مدرج بصرى",
-      location: "درعا",
-      brief: "مدرجة بصرى هي مدرج روماني يقع في مدينة بصرى السورية، وهي واحدة من أروع المدرجات الرومانية في العالم. تم بناء المدرج في القرن الأول الميلادي، ويتسع لـ 25 ألف متفرج",
-      image: 'src/assets/images/blog4.jpg',
-    },
-    {
-      id: 5,
-      title: "مدرج بصرى",
-      location: "درعا",
-      brief: "مدرجة بصرى هي مدرج روماني يقع في مدينة بصرى السورية، وهي واحدة من أروع المدرجات الرومانية في العالم. تم بناء المدرج في القرن الأول الميلادي، ويتسع لـ 25 ألف متفرج",
-      image: 'src/assets/images/blog4.jpg',
+  useEffect(() => {
+    setLoading(true);
+    switch (section) {
+      case "marks":
+        setCategory("الاثرية");
+        break;
+      case "nature":
+        setCategory("الطبيعة");
+        break;
     }
-  ]
+    setCurrentPage(1);
+    setLoading(false);
+  }, [section]);
 
-  const [blogs, setBlogs] = useState(data);
-  const [activeItem, setActiveItem] = useState(1);
+  const { blogs, totalPages, isLoadingBlogs } = blogServices.useFetchBlogs(
+    currentPage,
+    category
+  );
+  const isLoading = isLoadingBlogs || loading;
 
-  const handleItemClick = (itemIndex) => {
-    setActiveItem(itemIndex);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
-
-  const handlePageChange = (page) => {
-//TO DO: the implementation of this function 
-    console.log("Page changed to:", page);
-  };
-
   return (
-    <div className='BY_BlogPage'>
-      <Hero backgroundImage='src/assets/images/blogCover.jpg' />
-      <div className='BY_container'>
-        <div className='taps'>
-          <ul>
-            {list.map((item, index) => (
-              <li key={index}
-                className={activeItem === index ? 'active' : ''}
-                onClick={() => handleItemClick(index)}>
-                {item}</li>
-            ))}
-          </ul>
-
-
-        </div>
-        <div className='content_container'>
-          {blogs.map((item) => (
-            <div className='blog_conatiner' key={item.id}>
-              <BlogCard
-                title={item.title}
-                location={item.location}
-                brief={item.brief}
-                image={item.image}
-                button={<button>bushra</button>}
-              />
+    <div className="position-relative blog-bage-Ay">
+      <PageLayout img={section === "marks" ? marksHero : natureHero}>
+        {isLoading ? (
+          <div className="d-flex justify-content-center">
+            <div
+              className="spinner-border"
+              style={{ color: "rgb(126, 126, 126)" }}
+              role="status"
+            >
+              <span className="sr-only"></span>
             </div>
-          ))}
-          <div className='pagination_section'>
-            <Pagination pageCount={5} currentPage={2} handlePageChange={handlePageChange} />
           </div>
-          
+        ) : (
+          blogs.map((blog, index) => (
+            <BlogCard
+              key={index}
+              title={blog.title}
+              location={blog.city}
+              brief={blog.content}
+              image={mainURL+blog.main_image}
+              button={
+                <Button
+                  btnText="اقرأ المزيد"
+                  radius="10px"
+                  className="BY_CardsButtons"
+                />
+              }
+            />
+          ))
+        )}
+        <div className="buttons-slider desktop d-flex justify-content-center gap-3 position-absolute ">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <div
+              key={index}
+              className={`${currentPage == index + 1 ? "active" : ""}`}
+              onClick={() => handlePageChange(index + 1)}
+            />
+          ))}
         </div>
-      </div>
+      </PageLayout>
     </div>
-  )
+  );
 }
 
-export default BlogPage
+export default BlogPage;

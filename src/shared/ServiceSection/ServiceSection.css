@@ -1,0 +1,55 @@
+.services-section {
+    direction: rtl;
+}
+.services-section .section-title-Ay{
+    font-size: 32px;
+}
+
+.services-section .service-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.services-section .service-group .service {
+    display: flex;
+    gap: 10px;
+    direction: rtl;
+}
+
+.services-section .service-group .service .title {
+    font-size: 24px;
+}
+.services-section .service-group .service .icon {
+    font-size: 23px;
+}
+
+
+@media (max-width: 768px) {
+    .services-section{
+        text-align: center;
+        margin: 80px 40px;
+        margin-bottom: 20px;
+    }
+    .services-section .service-group {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .services-section .section-title-Ay{
+        font-size: 28px;
+        margin-bottom: 26px !important;
+    }
+    .services-section .service-group .service .title {
+        font-size: 20px;
+    }
+    .services-section .service-group .service .icon {
+        font-size: 16px;
+    }
+    .services-section .service-group .col-6 {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+}

@@ -6,7 +6,7 @@ import './Explorer.css'
 import PageLayout from "../../shared/PageLayout/PageLayout"
 import { mainURL } from '../../helpers/ExploreServices/ExploreURLs'
 import * as exploreServices from '../../helpers/ExploreServices/ExploreServices'
-import { hotelsHero, restaurantsHero, landmarksHero } from'../../helpers/ExploreServices/ExploreMainHero';
+import { hotelsHero, restaurantsHero, landmarksHero } from '../../helpers/ExploreServices/ExploreMainHero';
 import Button from '../../shared/Button/Button'
 
 const Explorer = () => {
@@ -49,7 +49,6 @@ const Explorer = () => {
 
     console.log(section);
 
-    const to = useNavigate();
 
 
     const getAllData = async () => {
@@ -87,12 +86,6 @@ const Explorer = () => {
     const [select1, setSelect1] = useState([]);
     const [select2, setSelect2] = useState([]);
 
-    const handleSearch = () => {
-        if (search) {
-            setCards(cards?.filter(e => e.name === search));
-        }
-    }
-
 
     useEffect(() => {
         console.log('select1', select1);
@@ -112,50 +105,69 @@ const Explorer = () => {
     const navigate = useNavigate();
 
     const handleReadMoreClick = (id) => {
-      let path;
-      switch (section) {
-        case 'hotels':
-          path = '/hotels';
-          break;
-        case 'resturants':
-          path = '/resturants';
-          break;
-        case 'lands':
-          path = '/lands';
-          break;
-        default:
-          path = '/';
-      }
-  
-    //   navigate(path+`/${id}`);
+        let path;
+        switch (section) {
+            case 'hotels':
+                path = '/hotel-details';
+                break;
+            case 'resturants':
+                path = '/restaurant-details';
+                break;
+            case 'lands':
+                path = '/landmark-details';
+                break;
+            default:
+                path = '/';
+        }
+
+        navigate(path + `/${id}`);
     };
+
+    const [searchQuery, setSearchQuery] = useState("");
+
+
+
+    const searchedCards = searchQuery
+        ? cards.filter(card =>
+            card.name.includes(searchQuery.toLowerCase())
+        )
+        : cards;
+
+    useEffect(() => {
+        console.log('searchQuery', searchQuery);
+        console.log('searchedCards', searchedCards);
+    }, [searchQuery])
+    useEffect(() => {
+        setSearchQuery("");
+    }, [cards]);
+
     return (
         <div className="position-relative">
             <PageLayout
                 img={
                     section === 'hotels'
-                      ? hotelsHero
-                      : section === 'resturants'
-                      ? restaurantsHero
-                      : section === 'lands'
-                      ? landmarksHero
-                      : img
-                  }
+                        ? hotelsHero
+                        : section === 'resturants'
+                            ? restaurantsHero
+                            : section === 'lands'
+                                ? landmarksHero
+                                : img
+                }
                 options1={["كامل القطر", ...cityNames]}
                 options2={(section === 'lands' ? sortByListLandmarks : sortByListHotelsRestorants)}
                 setFirstSelect={setSelect1}
                 setSecondSelect={setSelect2}
                 select1={select1}
                 select2={select2}
-                setValue={(e) => setSearch(e.target.value)}
-                onClickBtn={handleSearch}>
+                setValue={(e) => setSearchQuery(e.target.value)}
+            >
 
 
-                {!loading && section === 'lands' && cards && cards.map((card, index) =>
+                {!loading && section === 'lands' && searchedCards && searchedCards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="اقرأ المزيد" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)}/>}
-                        
+                        button={<Button btnText="اقرأ المزيد" radius="10px" className="BY_CardsButtons" onClick={() => handleReadMoreClick(card.id)} />}
+                        onclick={() => handleReadMoreClick(card.id)}
                         image={mainURL + card.internal_image}
                         location={card.city}
                         price={""}
@@ -168,7 +180,12 @@ const Explorer = () => {
                 {!loading && section === 'hotels' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)}/>}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons"
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                navigate(`/booking`);
+                            }} />}
+                        onclick={() => handleReadMoreClick(card.id)}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.price}
@@ -181,7 +198,12 @@ const Explorer = () => {
                 {!loading && section === 'resturants' && cards && cards.map((card, index) =>
                     <Card
                         brief={card.primary_description}
-                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons" onClick={handleReadMoreClick(card.id)}/>}
+                        onclick={() => handleReadMoreClick(card.id)}
+                        button={<Button btnText="إحجز الآن" radius="10px" className="BY_CardsButtons"
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                navigate('/booking');
+                            }} />}
                         image={mainURL + card.logo}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.table_price}

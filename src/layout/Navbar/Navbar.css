@@ -29,6 +29,7 @@ padding: 0;
 }
 .navbar .nav-brand {
     font-size:var(--font_size_section_title_responsive) ;
+    color: var(--white);
 }
 .navbar .nav-brand span{
     color: var(--main_green);

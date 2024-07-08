@@ -14,7 +14,68 @@ function BookPage() {
   return (
     <>
     <div className="container book-page">
-      <div className="card">
+      <div className="title-reservation-Ay">التحقق من استمارة التوفر</div>
+      <div className="row all-form">
+      <div className="col-8">
+        <form className="row g-3 book-form"  onSubmit={(e) => e.preventDefault()}>
+        <p>معلومات الاتصال </p>
+        <div className="col-md-6">
+          <input type="email" className="form-control" id="inputEmail4" placeholder="الاسم الكامل" />
+        </div>
+        <div className="col-md-6">
+          <input type="password" className="form-control" id="inputPassword4" placeholder="رقم التلفون" />
+        </div>
+        <div className="col-12">
+          <input
+            type="text"
+            className="form-control"
+            id="inputAddress"
+            placeholder="عنوان البريد الالكتروني "
+          />
+        </div>
+        <span>سوف نتصل بك أو نرسل لك رسالة نصية لتأكيد رقمك. تنطبق معدلات الرسائل والبيانات القياسية. سياسة الخصوصية</span>
+        <p>معلومات الزيارة </p>
+        <div className="col-md-6">
+          <label htmlFor="inputAddress2" style={{marginBottom:"10px"}}>تاريخ الدخول</label>
+          <input type="date" className="form-control" id="inputAddress2" placeholder="الدخول" />
+        </div>
+        <div className="col-md-6">
+          <label htmlFor="inputAddress2" style={{marginBottom:"10px"}}>تاريخ الخروج</label>
+          <input type="date" className="form-control" id="inputAddress2" placeholder="الدخول" />
+        </div>
+        <div className="col-md-6">
+          <select id="inputState" className="form-select">
+            <option>عدد الضيوف</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>أكثر</option>
+          </select>
+        </div>
+        <div className="col-md-6">
+          <select id="inputState" className="form-select">
+            <option >نوع الغرفة</option>
+            <option>صغيرة </option>
+            <option>كبيرة</option>
+          </select>
+        </div>
+        <div className="col-12">
+          <input
+            type="text"
+            className="form-control"
+            id="inputAddress2"
+            placeholder="الوصف"
+          />
+        </div>
+        <div className="col-12">
+          <button type="submit" className="btn btn-primary" onClick={() =>toggleModal()}>
+            احجز الآن
+          </button>
+        </div>
+      </form>
+        </div>
+        <div className="col-4">
+        <div className="card">
         <div className="place-info">
           <div className="image">
             <img src={reserveImage} alt="Image" className="place-image-ay"/>
@@ -56,62 +117,9 @@ function BookPage() {
           </div>
         </div>
       </div>
-      <form className="row g-3 book-form"  onSubmit={(e) => e.preventDefault()}>
-        <p>معلومات الاتصال </p>
-        <div className="col-md-6">
-          <input type="email" className="form-control" id="inputEmail4" placeholder="الاسم الكامل" />
         </div>
-        <div className="col-md-6">
-          <input type="password" className="form-control" id="inputPassword4" placeholder="رقم التلفون" />
-        </div>
-        <div className="col-12">
-          <input
-            type="text"
-            className="form-control"
-            id="inputAddress"
-            placeholder="عنوان البريد الالكتروني "
-          />
-        </div>
-        <span>سوف نتصل بك أو نرسل لك رسالة نصية لتأكيد رقمك. تنطبق معدلات الرسائل والبيانات القياسية. سياسة الخصوصية</span>
-        <p>معلومات الزيارة </p>
-        <div className="col-md-6">
-          <select id="inputState" className="form-select">
-            <option>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div className="col-md-6">
-          <select id="inputState" className="form-select">
-            <option>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div className="col-md-6">
-          <select id="inputState" className="form-select">
-            <option>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div className="col-md-6">
-          <select id="inputState" className="form-select">
-            <option >Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div className="col-12">
-          <input
-            type="text"
-            className="form-control"
-            id="inputAddress2"
-            placeholder="الوصف"
-          />
-        </div>
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary" onClick={() =>toggleModal()}>
-            احجز الآن
-          </button>
-        </div>
-      </form>
+      
+      </div>
     </div>
       {modal && (
         <PaymentModal toggleModal={toggleModal} />

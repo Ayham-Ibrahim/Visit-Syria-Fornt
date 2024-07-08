@@ -40,7 +40,7 @@
         text-align: center;
     }
     .rating-view .rate-flex{
-        margin: auto;
+        margin:  auto 20px;
         align-items: center;
     }
      .rating-view .rate-flex h2{

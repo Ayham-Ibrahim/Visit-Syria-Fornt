@@ -3,9 +3,9 @@ import './Card.css'
 import { IoStarSharp } from "react-icons/io5";
 import { GrLocation } from "react-icons/gr";
 
-const Card = ({ image, title, rate, brief, location, button, price_exists, price, text }) => {
+const Card = ({ image, title, rate, brief, location, button, price_exists, price, text, onclick= null }) => {
     return (
-        <div className='BY_MainCard'>
+        <div className='BY_MainCard' onClick={onclick}>
             <div className='image_section'>
                 <img src={image} alt="" />
             </div>

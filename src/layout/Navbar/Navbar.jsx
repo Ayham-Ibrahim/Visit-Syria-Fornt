@@ -35,7 +35,19 @@ function Navbar() {
             </div>
             <div className="nav-links">
               <ul>
-                <li>
+              <li>
+                  <Link
+                    to="recommendations/hotels"
+                    className={`  ${
+                      activeItem === "recommendations" ? "active-nav" : ""
+                    }`}
+                    onClick={() => handleItemClick("recommendations")}
+                  >
+                    التوصيات
+                  </Link>
+                </li>
+                {/* <li>
+
                   <Link
                     to="/recommendations"
                     className={`  ${
@@ -45,7 +57,7 @@ function Navbar() {
                   >
                     التوصيات
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     to="blogs/marks"

@@ -1,0 +1,19 @@
+.buttons-slider{
+    bottom: 119px;
+
+}
+.buttons-slider div {
+    cursor: pointer;
+    width: 63.76px;
+    height: 12.06px;
+    border-radius: 13px;
+    background-color: rgba(217, 217, 217, 1);
+    transition: .5s ease;
+    /* transform: translateX(-50%); */
+}
+.buttons-slider div.active {
+    width: 103.61px;
+    background-color: rgba(130, 203, 178, 1);
+}
+
+

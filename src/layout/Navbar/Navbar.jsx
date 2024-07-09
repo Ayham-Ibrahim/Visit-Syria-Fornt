@@ -17,13 +17,15 @@ function Navbar() {
   };
   const location = useLocation();
   const isRegisterPage = location.pathname === "/register";
-
+  const isLoginPage = location.pathname === "/login";
 
   if (isRegisterPage) {
     return null;
   }
-
-  if (!isRegisterPage)
+  if(isLoginPage) {
+    return null;
+  }
+  if (!isRegisterPage || !isLoginPage)
     return (
       <>
         <div className="navbar">
@@ -35,7 +37,19 @@ function Navbar() {
             </div>
             <div className="nav-links">
               <ul>
-                <li>
+              <li>
+                  <Link
+                    to="recommendations/hotels"
+                    className={`  ${
+                      activeItem === "recommendations" ? "active-nav" : ""
+                    }`}
+                    onClick={() => handleItemClick("recommendations")}
+                  >
+                    التوصيات
+                  </Link>
+                </li>
+                {/* <li>
+
                   <Link
                     to="/recommendations"
                     className={`${
@@ -45,7 +59,7 @@ function Navbar() {
                   >
                     التوصيات
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     to="blogs/marks"

@@ -38,10 +38,11 @@ import img7 from './assets/images/slider2.jpg'
 import img8 from './assets/images/slider3.jpg'
 import BlogDetails from './components/PlaceDetails/BlogDetails/BlogDetails'
 import PlaceDetailsLandmark from './components/PlaceDetails/PlaceDetailsLandmark/PlaceDetailsLandmark'
+import Login from './components/Login/Login'
 function App() {
   // const arrayImages = [img1, img2, img3, img4, img7, img5, img6, img8];
 //   const services = [
-    
+
 //     {
 //         title:'مسبح و أنشطة أطفال',
 //         icon:<LiaSwimmingPoolSolid />,
@@ -68,7 +69,7 @@ function App() {
 //     images : arrayImages,
 //     services: services,
 //   }
- 
+
   return (
     <>
 
@@ -89,8 +90,9 @@ function App() {
       <Route path='/blogs/:section' element={<BlogPage />} />
       {/* <Route path='/blog' element={<BlogPage />} /> */}
       <Route path='/booking' element={<BookPage />} />
-      <Route path='/recommendations' element={<RecommendationsPage />} />
+      <Route path='/recommendations/:section' element={<RecommendationsPage />} />
       <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
       <Route path='/hotel-details/:id' element={<PlaceDetailsHotel />} />
       <Route path='/restaurant-details/:id' element={<PlaceDetailsRestaurant />} />
       <Route path='/blog-details/:id' element={<BlogDetails />} />

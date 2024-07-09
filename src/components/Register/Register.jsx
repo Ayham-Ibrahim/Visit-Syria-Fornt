@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import './Register.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import {  toast  } from 'react-toastify';
 function Register() {
     const [name , setName] = useState('');
@@ -57,6 +57,7 @@ function Register() {
                     <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required  placeholder='البريد الالكتروني' />
                     <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required placeholder='كلمة المرور ' />
                     <button type='submit' onClick={(e)=>handleRegister(e)}>دخول</button>
+                    <p className='mt-3'> لديك حساب بالفعل ؟ <Link to='/login' > سجل الدخول اللآن</Link> </p>
                 </form>
             </div>
         </section>

@@ -12,11 +12,11 @@ import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { CiParking1 } from "react-icons/ci";
 import { BsAirplane } from "react-icons/bs";
 import { IoWifiSharp } from "react-icons/io5";
-
 import { useNavigate, useParams } from "react-router-dom"
 import * as restaurantServices from '../../../helpers/RestaurantsServices/RestaurantsServices';
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
 import React from 'react'
+import img from '../../../assets/images/betalwai2.png'
 function PlaceDetailsRestaurant() {
 
     const { id } = useParams();
@@ -59,11 +59,21 @@ function PlaceDetailsRestaurant() {
     useEffect(() => {
         getrestuarant();
         setLoading(false);
+        setRestuarant({
+            cover_image: '',
+            images: [img, img , img, img],
+            name: 'ss',
+            city: 'dd',
+            location: 'll',
+            logo: '',
+            secondary_description: 'ww',
+            menu: 'ss'
+        });
     }, []);
 
     useEffect(() => {
         if (restuarant) {
-            setImages(restuarant.images.map((str) => mainURL + str));
+            setImages(restuarant.images.map((str) =>  str));
         }
         setLoading(false);
         console.log('restuarant Images', restuarantImages);

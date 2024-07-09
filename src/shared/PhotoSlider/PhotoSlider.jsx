@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import generateArray from '../../helpers/generateArrayOfArrays';
 import './PhotoSlider.css';
 import "slick-carousel/slick/slick.css";
@@ -8,14 +8,18 @@ import Slider from "react-slick";
 
 const PhotoSlider = ({ imgs }) => {
     const [index, setIndex] = useState(0);
+    const [newArray, setNewArray] = useState([]);
 
-    const newArray = generateArray(imgs, 4);
+    useEffect(() => {
+        setNewArray(generateArray(imgs, 4));
+    }, []);
 
-    const sliderRef = useRef(null);
+
+    const sliderReff = useRef(null);
 
     const handleButtonClick = (i) => {
         setIndex(i);
-        sliderRef.current.slickGoTo(i);
+        sliderReff.current.slickGoTo(i);
     };
 
     const handleAfterChange = (currentSlide) => {
@@ -35,17 +39,18 @@ const PhotoSlider = ({ imgs }) => {
 
     return (
         <div className="photo-slider">
-            <Slider ref={sliderRef} {...settings} className='photo-slider desktop'>
-                {newArray?.map((e, i) => {
-                    const [mainImg, ...smallImgs] = e;
+            <Slider ref={sliderReff} {...settings} className='photo-slider desktop'>
+                {newArray && newArray?.map((e, i) => {
                     return (
                         <div key={i}>
-                            <img key={index} src={mainImg} alt="Main Image" />
-                            <div className='photo-slider-grid'>
-                                {smallImgs?.map((x, j) => (
-                                    <img key={j} src={x} alt={`Small Image ${j + 1}`} loading='lazy' />
+                            {i}
+                            <img key={index} src={e[0]} alt="Main Image" />
+                            {/* <div className='photo-slider-grid'>
+                                {[...e]?.map((img, index) => (
+                                    index !== 0 &&
+                                    <img key={index} src={img} alt={`Small Image ${index + 1}`} />
                                 ))}
-                            </div>
+                            </div> */}
                         </div>
                     );
                 })}
@@ -60,7 +65,7 @@ const PhotoSlider = ({ imgs }) => {
                 ))}
             </div>
 
-            <Slider ref={sliderRef} {...settings} className='photo-slider mobile'>
+            <Slider ref={sliderReff} {...settings} className='photo-slider mobile'>
                 {imgs?.map((e, i) => {
                     return <div key={i}>
                         <img

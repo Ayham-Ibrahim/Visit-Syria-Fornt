@@ -35,7 +35,7 @@ function PageLayout({ img, value, setValue, onClickBtn, options1, options2, setF
             </div>
             : pathname.includes('blogs')
               ?
-              <div className='tabs-container container mx-auto justify-content-end position-relative z-2' style={{ marginTop: '-100px' }}>
+              <div className='tabs-container container mx-auto justify-content-end position-relative z-2 gap-3' style={{ marginTop: '-100px' }}>
                 <Link className={section === 'marks' ? 'bg-white text-black' : 'text-white'} to={'/blogs/marks'}>أثرية</Link>
                 <Link className={section === 'nature' ? 'bg-white text-black' : 'text-white'} to={'/blogs/nature'}>طبيعية</Link>
               </div>

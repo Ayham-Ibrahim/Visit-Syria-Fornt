@@ -11,8 +11,9 @@
 
 .photo-slider .first-img {
     width: 100% !important;
-    height: 708px !important;
+    height: 500px !important;
     border-radius: 15px !important;
+    object-fit: cover !important;
 }
 
 .photo-slider .first-img.active {
@@ -27,7 +28,7 @@
     margin-top: 30px;
     display: grid !important;
     gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(368.38px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fill, minmax(368.38px, 1fr)) !important;
 }
 
 .photo-slider .img {
@@ -35,9 +36,9 @@
 }
 
 .photo-slider .photo-slider-grid img {
-    height: 280.66px;
-    border-radius: 15px;
-    overflow: hidden;
+    height: 280.66px !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
     object-fit: cover;
 }
 
@@ -89,7 +90,7 @@
         display: block;
     }   
     .photo-slider.desktop {    
-        display: none;
+        display: none !important;
     }  
     .photo-slider .buttons-slider.desktop {
         display: none;

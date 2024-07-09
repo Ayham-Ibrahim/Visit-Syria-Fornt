@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import generateArray from '../../helpers/generateArrayOfArrays';
 import './PhotoSlider.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const PhotoSlider = ({ imgs }) => {
     const [index, setIndex] = useState(0);
@@ -15,46 +13,35 @@ const PhotoSlider = ({ imgs }) => {
     }, []);
 
 
-    const sliderReff = useRef(null);
+    const swiperRef = useRef(null);
 
     const handleButtonClick = (i) => {
         setIndex(i);
-        sliderReff.current.slickGoTo(i);
+        swiperRef.current.swiper.slideTo(i);
+      };
+    
+    const handleAfterChange = (swiper) => {
+        setIndex(swiper.activeIndex);
     };
 
-    const handleAfterChange = (currentSlide) => {
-        setIndex(currentSlide);
-    };
-
-    const settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        // autoplay: true,
-        autoplaySpeed: 5000,
-        pauseOnHover: true,
-        afterChange: handleAfterChange
-    };
 
     return (
         <div className="photo-slider">
-            <Slider ref={sliderReff} {...settings} className='photo-slider desktop'>
-                {newArray && newArray?.map((e, i) => {
+            <Swiper ref={swiperRef} slidesPerView={1} loop={true} className='photo-slider desktop' onSlideChange={handleAfterChange}>
+                {newArray && newArray.map((e, i) => {
                     return (
-                        <div key={i}>
-                            {i}
-                            <img key={index} src={e[0]} alt="Main Image" />
-                            {/* <div className='photo-slider-grid'>
+                        <SwiperSlide key={i}>
+                            <img key={index} src={e[0]} alt="Main Image" className='first-img'/>
+                            <div className='photo-slider-grid'>
                                 {[...e]?.map((img, index) => (
                                     index !== 0 &&
                                     <img key={index} src={img} alt={`Small Image ${index + 1}`} />
                                 ))}
-                            </div> */}
-                        </div>
+                            </div>
+                        </SwiperSlide>
                     );
                 })}
-            </Slider>
+            </Swiper>
             <div className='buttons-slider desktop'>
                 {newArray.map((e, i) => (
                     <div
@@ -65,16 +52,16 @@ const PhotoSlider = ({ imgs }) => {
                 ))}
             </div>
 
-            <Slider ref={sliderReff} {...settings} className='photo-slider mobile'>
+            <Swiper ref={swiperRef} slidesPerView={1} loop={true} className='photo-slider mobile' onSlideChange={handleAfterChange}>
                 {imgs?.map((e, i) => {
-                    return <div key={i}>
+                    return <SwiperSlide key={i}>
                         <img
                             key={index}
                             src={e}
                         />
-                    </div>
+                    </SwiperSlide>
                 })}
-            </Slider>
+            </Swiper>
             <div className='buttons-slider mobile'>
                 {imgs.map((e, i) => (
                     <div

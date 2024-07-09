@@ -59,16 +59,6 @@ function PlaceDetailsRestaurant() {
     useEffect(() => {
         getrestuarant();
         setLoading(false);
-        setRestuarant({
-            cover_image: '',
-            images: [img, img , img, img],
-            name: 'ss',
-            city: 'dd',
-            location: 'll',
-            logo: '',
-            secondary_description: 'ww',
-            menu: 'ss'
-        });
     }, []);
 
     useEffect(() => {

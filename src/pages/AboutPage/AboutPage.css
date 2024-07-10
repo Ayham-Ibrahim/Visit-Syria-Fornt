@@ -31,3 +31,8 @@
         width: 90.61px;
     }
 }
+
+
+.about-AY .explorer .explorer-hero .explorer-top-section .search-filter {
+    display: none;
+  }

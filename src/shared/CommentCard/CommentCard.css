@@ -1,0 +1,79 @@
+.card-custom {
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.card-custom:hover {
+  transform: scale(1.05);
+}
+
+.overflow-auto {
+  white-space: nowrap;
+}
+
+
+.user-comment {
+  display: flex;
+  gap: 30px;
+}
+.content-comment-card {
+  max-width: 508px;
+  max-height: 197px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 41.45px;
+  overflow: hidden; /* Hide any content that overflows */
+  text-overflow: ellipsis;
+
+}
+.comment-card {
+  background-color: var(--white);
+  max-width: 569px;
+  max-height: 380px;
+  padding: 22px 30px;
+  border-radius: 15px;
+  min-width: 279px;
+  min-height: 233px;
+}
+.comment-card .comment-image {
+  width: fit-content;
+}
+.comment-card .comment-image img {
+  width: 100%;
+}
+.comment-writer-name {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 41.45px;
+}
+.date-of-comment {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30.7px;
+  color: var(--light_green_text);
+}
+
+
+@media (max-width:768px) {
+  .comment-card {
+    min-width: 279px;
+  min-height: 233px;
+  }
+  .content-comment-card {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 26.45px;
+  }
+  .user-comment {
+    display: flex;
+    gap: 10px;
+  }
+  .comment-writer-name {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 30.45px;
+  }  
+  .comment-card .comment-image {
+    width: 60px;
+  }
+}

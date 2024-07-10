@@ -23,13 +23,7 @@ const RecommendationsPage = () => {
 
     //_______________________________________
 
-
-
     const { section } = useParams();
-
-    console.log(section);
-
-
 
     const getAllData = async () => {
         setLoading(true);
@@ -40,9 +34,7 @@ const RecommendationsPage = () => {
         try {
             setLoading(false);
             const response = await exploreServices.getAllExploreData(apiName, currentPage, (selectedCity != "" ? (selectedCity === "كامل القطر" ? null : selectedCity) : null), (sortBy != "" ? sortBy : null));
-            console.log('response', response);
             setCards(response.data);
-            console.log('cards', cards);
             setTotalPages(response.pagination.total_pages);
 
         } catch (error) {
@@ -51,7 +43,6 @@ const RecommendationsPage = () => {
         }
     };
     useEffect(() => {
-        console.log('currentPage', currentPage);
         setCurrentPage(1);
         getAllData();
     }, [section]);
@@ -68,16 +59,12 @@ const RecommendationsPage = () => {
 
 
     useEffect(() => {
-        console.log('select1', select1);
-        console.log('select2', select2);
         setSelectedCity(select1);
         setSortBy(select2);
 
     }, [select1, select2]);
 
     useEffect(() => {
-        console.log('currentPage', currentPage);
-        console.log('selectedCity', selectedCity);
         getAllData();
     }, [currentPage, selectedCity, sortBy]);
 
@@ -113,10 +100,11 @@ const RecommendationsPage = () => {
         )
         : cards;
 
-    useEffect(() => {
-        console.log('searchQuery', searchQuery);
-        console.log('searchedCards', searchedCards);
-    }, [searchQuery])
+    // useEffect(() => {
+    //     console.log('searchQuery', searchQuery);
+    //     console.log('searchedCards', searchedCards);
+    // }, [searchQuery])
+
     useEffect(() => {
         setSearchQuery("");
     }, [cards]);
@@ -160,7 +148,7 @@ const RecommendationsPage = () => {
                                 navigate(`/booking`);
                             }} />}
                         onclick={() => handleReadMoreClick(card.id)}
-                        image={mainURL + card.logo}
+                        image={mainURL + card.cover_image}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.price}
                         price_exists={true}
@@ -178,7 +166,7 @@ const RecommendationsPage = () => {
                                 event.stopPropagation();
                                 navigate('/booking');
                             }} />}
-                        image={mainURL + card.logo}
+                        image={mainURL + card.cover_image}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.table_price}
                         price_exists={true}

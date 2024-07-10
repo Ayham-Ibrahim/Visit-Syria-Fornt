@@ -67,18 +67,15 @@ function AboutPage() {
 
     }
     setCurrentPage(1);
-    console.log('loading', loading);
   }, [section]);
 
   useEffect(() => {
-    console.log('category', category);
     getAllCategoryData();
   }, [category])
 
 
 
   useEffect(() => {
-    console.log('singleAboutItemafter', singleAboutItem);
 
     if (singleAboutItem) {
       setImages(singleAboutItem.images.map((str) => mainURL + str));
@@ -93,13 +90,13 @@ function AboutPage() {
   }, [currentPage]);
 
 
-  useEffect(() => {
-    if (images)
-      console.log("images list", images);
-  }, [images])
+  // useEffect(() => {
+  //   if (images)
+  //     console.log("images list", images);
+  // }, [images])
 
   return (
-    <div className="BY_AboutSyria">
+    <div className="BY_AboutSyria about-AY">
       {!loading && singleAboutItem &&
         <PageLayout img={(singleAboutItem ? mainURL + singleAboutItem.main_image : Img)}>
 

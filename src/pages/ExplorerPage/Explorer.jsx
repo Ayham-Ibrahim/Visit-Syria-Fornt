@@ -12,8 +12,7 @@ import Button from '../../shared/Button/Button'
 const Explorer = () => {
     const [cards, setCards] = useState([]);
     const { cities, cityNames, isLoadingCities } = exploreServices.useFetchCities();
-    console.log('cities', cities);
-    console.log('cityNames', cityNames);
+
 
     const sortByListLandmarks = [
         { label: 'ترتيب حسب', value: null },
@@ -47,10 +46,6 @@ const Explorer = () => {
 
     const { section } = useParams();
 
-    console.log(section);
-
-
-
     const getAllData = async () => {
         setLoading(true);
         const apiName =
@@ -60,9 +55,7 @@ const Explorer = () => {
         try {
             setLoading(false);
             const response = await exploreServices.getAllExploreData(apiName, currentPage, (selectedCity != "" ? (selectedCity === "كامل القطر" ? null : selectedCity) : null), (sortBy != "" ? sortBy : null));
-            console.log('response', response);
             setCards(response.data);
-            console.log('cards', cards);
             setTotalPages(response.pagination.total_pages);
 
         } catch (error) {
@@ -71,15 +64,14 @@ const Explorer = () => {
         }
     };
     useEffect(() => {
-        console.log('currentPage', currentPage);
         setCurrentPage(1);
         getAllData();
     }, [section]);
 
 
-    useEffect(() => {
-        console.log('loading', loading);
-    }, [loading]);
+    // useEffect(() => {
+    //     console.log('loading', loading);
+    // }, [loading]);
 
 
     const [search, setSearch] = useState();
@@ -88,16 +80,12 @@ const Explorer = () => {
 
 
     useEffect(() => {
-        console.log('select1', select1);
-        console.log('select2', select2);
         setSelectedCity(select1);
         setSortBy(select2);
 
     }, [select1, select2]);
 
     useEffect(() => {
-        console.log('currentPage', currentPage);
-        console.log('selectedCity', selectedCity);
         getAllData();
     }, [currentPage, selectedCity, sortBy]);
 
@@ -133,10 +121,8 @@ const Explorer = () => {
         )
         : cards;
 
-    useEffect(() => {
-        console.log('searchQuery', searchQuery);
-        console.log('searchedCards', searchedCards);
-    }, [searchQuery])
+    // useEffect(() => {
+    // }, [searchQuery])
     useEffect(() => {
         setSearchQuery("");
     }, [cards]);
@@ -186,7 +172,7 @@ const Explorer = () => {
                                 navigate(`/booking`);
                             }} />}
                         onclick={() => handleReadMoreClick(card.id)}
-                        image={mainURL + card.logo}
+                        image={mainURL + card.cover_image}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.price}
                         price_exists={true}
@@ -204,7 +190,7 @@ const Explorer = () => {
                                 event.stopPropagation();
                                 navigate('/booking');
                             }} />}
-                        image={mainURL + card.logo}
+                        image={mainURL + card.cover_image}
                         location={`${card.city_name} - ${card.location}`}
                         price={card.table_price}
                         price_exists={true}

@@ -1,12 +1,9 @@
-.home-page  {
+.home-page {
     overflow-x: hidden !important;
 }
-.home-page .homePageContentContainer{
-    max-width: 1400px;
-    margin: 0 auto;
-}
 
-.home-page .homePageContentContainer .hero-section .cover-container {
+
+.home-page .hero-section .cover-container {
     height: 784px;
     padding-top: 180px;
 
@@ -46,26 +43,26 @@
     border: 1.75px solid var(--white);
 }
 
-.home-page .homePageContentContainer .public-preif-section {
+.home-page .public-preif-section {
     margin-top: 180px;
     height: 100vh;
 }
 
-.home-page .homePageContentContainer .public-preif-section .image-syria-map {
+.home-page .public-preif-section .image-syria-map {
     position: relative;
     height: 500px;
 }
 
-.home-page .homePageContentContainer .public-preif-section .image-syria-map .shape {
+.home-page .public-preif-section .image-syria-map .shape {
     position: relative;
     z-index: -1;
 }
 
-.home-page .homePageContentContainer .public-preif-section .image-syria-map .shape-responsive {
+.home-page .public-preif-section .image-syria-map .shape-responsive {
     display: none;
 }
 
-.home-page .homePageContentContainer .public-preif-section .image-syria-map .shape img {
+.home-page .public-preif-section .image-syria-map .shape img {
     height: 276px;
     width: 746px;
     position: absolute;
@@ -73,16 +70,16 @@
     z-index: 1;
 }
 
-.home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map {
+.home-page .public-preif-section .image-syria-map .syria-map {
     position: relative;
     height: inherit;
 }
 
-.home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map img.syria-sh {
+.home-page .public-preif-section .image-syria-map .syria-map img.syria-sh {
     mix-blend-mode: multiply;
 }
 
-.home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map img {
+.home-page .public-preif-section .image-syria-map .syria-map img {
     height: 600px;
     width: 700px;
     position: absolute;
@@ -124,13 +121,12 @@
 }
 
 .home-blog-container {
-    /* padding-right: 112px; */
+  
     display: flex;
     justify-content: center;
-    align-items: end;
     flex-direction: column;
     text-align: right;
-  
+
 }
 
 .home-blog-container .card-blog-title_responsive {
@@ -152,43 +148,53 @@
 }
 
 .home-blog-content {
+   
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
+    width: 100%;
+    padding-right: 100px;
+
+
 }
 
 .home-blog-image {
     position: relative;
-    width: 530px !important;
     height: 495px !important;
+    width: 20%;
+
+
 }
 
 .home-blog-image .background-squre {
     background-color: var(--main_green);
-    width: 505px !important;
+    width: 200%;
     height: 470px !important;
     position: absolute;
-    top: -88px;
-    left: 70%;
+    top: -81px;
+    left: 50%;
     border-radius: 30px 30px 0px 30px;
 }
 
 .home-blog-image img {
-    width: 505px !important;
+    width: 200%;
     height: 470px !important;
     position: absolute;
-    top: -65px;
-    left: 75%;
+    top: -13%;
+    left: 60%;
     border-radius: 30px 30px 0px 30px;
+    object-fit: cover;
 }
 
 .home-blog-text {
     background-color: var(--white_icon_color);
-    width: 1000px;
     height: 500px;
     padding: 70px 33px 0 0;
     border-radius: 15px;
+    width: 80%;
 }
 
 .home-blog-container .card-blog-title h1 {
@@ -199,7 +205,8 @@
 
 .home-blog-container .card-blog-text {
     display: flex;
-    justify-content: flex-end;
+    justify-content: right;
+   
 }
 
 .home-blog-container .card-blog-text p {
@@ -208,13 +215,15 @@
     font-weight: 300;
     text-align: right;
     margin-bottom: 50px;
+    width: 55%;
+    
 }
 
 .BY_card_blog_button_home {
-    width: 15%;
+    width: 160px;
 }
 
-#root>div.home-page .homePageContentContainer>div.home-blog-card>div>div>img {
+#root>div.home-page>div.home-blog-card>div>div>img {
     display: none;
 }
 
@@ -260,31 +269,31 @@
         font-size: 23px;
     }
 
-    #root>div.home-page .homePageContentContainer>div.public-preif-section>div>div.col-lg-7.col-md-12,
-    #root>div.home-page .homePageContentContainer>div.public-preif-section>div>div.col-lg-5.col-md-12,
-    #root>div.home-page .homePageContentContainer>div.public-preif-section>div {
+    #root>div.home-page>div.public-preif-section>div>div.col-lg-7.col-md-12,
+    #root>div.home-page>div.public-preif-section>div>div.col-lg-5.col-md-12,
+    #root>div.home-page>div.public-preif-section>div {
         width: 100%;
         padding: 0;
         overflow-x: hidden !important;
     }
-   
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .shape {
+
+    .home-page .public-preif-section .image-syria-map .shape {
         display: none;
     }
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map {
+    .home-page .public-preif-section .image-syria-map {
         overflow-x: hidden !important;
     }
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .shape-responsive {
+    .home-page .public-preif-section .image-syria-map .shape-responsive {
         display: block;
         width: calc(100vw + 20px) !important;
         position: relative;
         right: -10px;
     }
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .shape-responsive img {
+    .home-page .public-preif-section .image-syria-map .shape-responsive img {
 
         height: 150px;
         width: 100vw;
@@ -298,7 +307,7 @@
         justify-content: center;
     }
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map img {
+    .home-page .public-preif-section .image-syria-map .syria-map img {
 
         height: 400px;
         width: 500px;
@@ -307,21 +316,98 @@
         top: 60px;
         z-index: 2;
     }
-
-    .home-blog-card {
-        margin-top: 300px;
+    #root>div.home-page>div.home-blog-card>div>div>img {
+        display: block;
     }
+
+   
+
+    .home-blog-container {
+        padding: 0;
+        margin: 0 auto;
+    }
+    .home-blog-card {
+        margin-top: 400px;
+    }
+
+    .home-blog-container .card-blog-title_responsive {
+        display: flex;
+        font-size: 1.75rem;
+    }
+
+    .home-blog-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .home-blog-image {
+        display: none;
+    }
+
+   
+
+    .home-blog-content img {
+        width: 100vw;
+        height: 600px;
+        border-radius: 50px;
+        object-fit: cover;
+        box-shadow: 0px -9px 16px 0px rgba(141, 211, 187, 1);
+        border-radius: 30px 30px 0px 0px;
+        display: block;
+    }
+
+    .home-blog-image .background-squre {
+        display: none;
+    }
+
+  
+
+    .home-blog-text {
+        position: relative;
+        bottom: 150px;
+        text-align: center;
+        width: 80%;
+        height: fit-content;
+        padding: 30px;
+        border-radius: 25px;
+       
+    }
+
+    .home-blog-container .card-blog-text p {
+        text-align: center !important;
+        font-weight: 600;
+        width: 100%;
+
+    }
+
+    .home-blog-text .card-blog-title {
+        display: none;
+
+    }
+
+    .BY_card_blog_button_home {
+        width: 105px;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+
+
 }
 
 @media (max-width: 840px) {
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map img {
+    .home-page .public-preif-section .image-syria-map .syria-map img {
 
         height: 500px;
         width: 600px;
         right: 9%;
     }
 
-    #root>div.home-page .homePageContentContainer>div.home-blog-card>div>div>img {
+    #root>div.home-page>div.home-blog-card>div>div>img {
         display: block;
     }
 }
@@ -375,17 +461,17 @@
         font-size: 18px;
     }
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map {
+    .home-page .public-preif-section .image-syria-map .syria-map {
         width: 100vw;
         height: 400px;
     }
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .shape-responsive img {
+    .home-page .public-preif-section .image-syria-map .shape-responsive img {
         bottom: -250px;
-        
+
     }
 
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map img {
+    .home-page .public-preif-section .image-syria-map .syria-map img {
 
         height: 300px;
         width: 400px;
@@ -409,6 +495,7 @@
         align-items: center;
         flex-direction: column;
         width: 100%;
+        padding-right: 0px;
     }
 
     .home-blog-image {
@@ -424,6 +511,7 @@
         object-fit: cover;
         box-shadow: 0px -9px 16px 0px rgba(141, 211, 187, 1);
         border-radius: 30px 30px 0px 0px;
+
     }
 
     .home-blog-image .background-squre {
@@ -447,13 +535,14 @@
     .home-blog-container .card-blog-text p {
         text-align: center !important;
         font-weight: 600;
-       
+
     }
 
     .home-blog-text .card-blog-title {
         display: none;
-        
+
     }
+
     .BY_card_blog_button_home {
         width: 105px;
         font-size: 1rem;
@@ -462,7 +551,7 @@
 }
 
 @media (max-width: 575px) {
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map img {
+    .home-page .public-preif-section .image-syria-map .syria-map img {
 
         height: 350px;
         width: 420px;
@@ -470,7 +559,7 @@
         top: 0px;
     }
 
-    #root>div.home-page .homePageContentContainer>div.public-preif-section>div {
+    #root>div.home-page>div.public-preif-section>div {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -480,7 +569,7 @@
 }
 
 @media (max-width: 410px) {
-    .home-page .homePageContentContainer .public-preif-section .image-syria-map .syria-map img {
+    .home-page .public-preif-section .image-syria-map .syria-map img {
         height: 300px;
         width: 350px;
         right: 0px;

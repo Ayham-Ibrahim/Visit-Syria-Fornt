@@ -17,7 +17,6 @@ function HomePage() {
   return (
     <div className='home-page'>
       <Hero backgroundImage={homeCover} />
-      <div className="homePageContentContainer">
         <div className="public-preif-section">
           <div className="row">
             <div className="col-lg-7 col-md-12 order-lg-1 order-md-2 order-sm-2">
@@ -82,7 +81,6 @@ function HomePage() {
         </div>
       </div>
 
-    </div>
   )
 }
 

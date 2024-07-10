@@ -8,7 +8,12 @@ import Hero from '../../components/Hero/Hero'
 import blogCardImage from './../../assets/images/home-blog.jpg'
 import shapeImage from './../../assets/images/shape-res.png'
 import homeCover from './../../assets/images/home-cover.png'
+import Button from '../../shared/Button/Button'
+import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom"
+
 function HomePage() {
+  const navigate = useNavigate();
   return (
     <div className='home-page'>
       <Hero backgroundImage={homeCover} />
@@ -47,6 +52,9 @@ function HomePage() {
       </div>
       <div className="home-blog-card mb-5">
         <div className="home-blog-container">
+          <div className="card-blog-title_responsive">
+            <h1>المدونة </h1>
+          </div>
           <div className="home-blog-content">
             <div className="home-blog-image">
               <div className="background-squre"></div>
@@ -62,9 +70,11 @@ function HomePage() {
                   اقرأ المدونات التي تتحدث عن طبيعة وآثار سوريا، وسوف تجد نفسك على رحلة استكشافية مثيرة في عالم غني بالتنوع البيئي و السياحي و الأثري والجمال الطبيعي
                 </p>
               </div>
-              <Link to='/blog' className="brief-button ">
-                <button>{"<"}  من هنا   </button>
-              </Link>
+              <Button
+                btnText= "من هنا"
+                className="BY_card_blog_button_home" 
+                onClick={() => navigate('/blogs/marks')} />
+            
             </div>
           </div>
         </div>

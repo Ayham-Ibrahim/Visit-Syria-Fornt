@@ -9,7 +9,6 @@ import blogCardImage from './../../assets/images/home-blog.jpg'
 import shapeImage from './../../assets/images/shape-res.png'
 import homeCover from './../../assets/images/home-cover.png'
 import Button from '../../shared/Button/Button'
-import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom"
 
 function HomePage() {

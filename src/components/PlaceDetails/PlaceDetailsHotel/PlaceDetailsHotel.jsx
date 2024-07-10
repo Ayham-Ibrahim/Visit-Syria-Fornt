@@ -118,12 +118,14 @@ function PlaceDetailsHotel() {
                         </div>
                         <div className="place-description">
                             <p className='m-0'>
-                                {hotel.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
+                                {/* {hotel.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
                                     <React.Fragment key={index}>
                                         {line}
                                         <br />
                                     </React.Fragment>
-                                ))}</p>
+                                ))} */}
+                                {hotel.secondary_description}
+                                </p>
 
 
                         </div>

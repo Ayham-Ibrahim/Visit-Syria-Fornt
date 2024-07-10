@@ -29,7 +29,7 @@ const Button = ({ btnText, radius, className, onClick }) => {
         borderColor: "white",
         outline: "solid 1px #8DD3BB",
         borderRadius: `${radius}`,
-        color: "var(--black_button_tex)",
+        color: "#112211",
     };
 
     return (

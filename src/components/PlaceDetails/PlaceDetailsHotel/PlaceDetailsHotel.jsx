@@ -20,6 +20,7 @@ import * as hotelSrevices from '../../../helpers/HotelsServices/HotelsServices';
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
+import CommentSection from '../../../shared/CommentSection/CommentSection';
 
 function PlaceDetailsHotel() {
     // const [selectedValue, setSelectedValue] = useState('Option 1');
@@ -160,6 +161,10 @@ function PlaceDetailsHotel() {
                                 </div>
                             </div>
 
+                        </div>
+                        <div className='green-line' ></div>
+                        <div className="container" style={{ padding:"0 40px" }}>
+                            <CommentSection/>
                         </div>
                         <div className='green-line' ></div>
                         <ContactSection />

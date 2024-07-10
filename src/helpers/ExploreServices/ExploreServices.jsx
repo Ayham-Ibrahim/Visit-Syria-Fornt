@@ -12,7 +12,6 @@ export function useFetchCities() {
         setIsLoadingCities(true);
         axios.get(CitiesAPIURL)
             .then(res => {
-                console.log("res cities", res);
                 setCities(res.data.data);
                 const names = res.data.data.map(city => city.name);
                 setCityNames(names);

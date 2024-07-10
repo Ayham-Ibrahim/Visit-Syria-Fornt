@@ -1,0 +1,12 @@
+.card-custom {
+    transition: transform 0.5s ease;
+    cursor: pointer;
+  }
+  
+  .card-custom:hover {
+    transform: scale(1.05);
+  }
+  
+  .overflow-auto {
+    white-space: nowrap;
+  }

@@ -1,0 +1,95 @@
+.comment-section {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+.comment-section .comment-section-header{
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 107px;
+}
+.comment-section .comment-section-header .comment-section-title {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.comment-section .comment-section-header .comment-section-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 50px
+}
+.comment-section .comment-section-header .comment-section-title .comment-count {
+    font-size: 24px;
+}
+.comment-section .comment-section-header .comment-section-title .comment-count span {
+    font-size: 20px;
+}
+.comment-section .comments {
+    display: flex;
+    gap: 25px;
+    overflow: scroll;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+
+@media (max-width:992px) {
+    .comment-section .comment-section-header .comment-section-title {
+        font-size: 28px;
+    }
+    .comment-section .comment-section-header .comment-section-title .comment-count {
+        font-size: 16px;
+    }
+
+    .comment-section .comment-section-header {
+        flex-direction: column;
+
+    }
+    .comment-section .comment-section-header .comment-section-buttons {
+        margin-top: 20px;
+    }
+    .comment-section .comment-section-header{
+        margin-bottom: 90px;
+    }
+}
+
+@media (min-width:767px) and (max-width:992px) {
+    .comment-section .comment-section-header .comment-section-buttons {
+        display: flex;
+        justify-content:flex-start;
+        align-items: center;
+    }
+}
+
+@media (max-width:768px) {
+.row > * {
+    width: 50%;
+    }
+.comment-section .comment-section-header .comment-section-buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.comment-section .comment-section-header .comment-section-buttons .comment-button {
+    width: fit-content;
+}
+}
+
+@media (max-width:515px) {
+.comment-section .comment-section-header .comment-section-buttons .comment-button {
+
+    font-size: inherit;
+}
+.comment-section .comment-section-header .comment-section-buttons {
+    gap: 5px;
+}
+}
+
+@media (max-width:430px) {
+    .comment-section .comment-section-header .comment-section-buttons .comment-button {
+        font-size: 12px;
+        padding: 8px 8px 9px 8px;
+    }
+}

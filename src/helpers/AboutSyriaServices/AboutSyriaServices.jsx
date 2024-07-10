@@ -9,11 +9,9 @@ export async function getAllAboutData(currentPage,category = null) {
     const perPageQuery = `&per_page=1`;
 
     try {
-        console.log("URL", AboutSyriaAPIURL+categoryQuery);
         const response = await axios.get(AboutSyriaAPIURL+pageQuery+perPageQuery+categoryQuery);
         if (response.status === 200) {
             const allData = response.data;
-            console.log("allData api", allData)
             return allData;
         } else {
             throw new Error(`Failed to get allData from AboutSyria`);

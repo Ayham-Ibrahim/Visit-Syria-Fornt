@@ -64,8 +64,7 @@
     width: 103.61px;
     background-color: rgba(130, 203, 178, 1);
 }
-
-.photo-slider.photo-slider.desktop {    
+.photo-slider .photo-slider.desktop {    
     display: flex;
 }
 
@@ -84,6 +83,7 @@
 .slick-track {
     margin-left: 10px;
 }
+
 
 @media screen and (max-width: 1280px) {
     .photo-slider.mobile {    

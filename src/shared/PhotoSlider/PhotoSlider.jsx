@@ -10,7 +10,7 @@ const PhotoSlider = ({ imgs }) => {
 
     useEffect(() => {
         setNewArray(generateArray(imgs, 4));
-    }, []);
+    }, [imgs]);
 
 
     const swiperRef = useRef(null);

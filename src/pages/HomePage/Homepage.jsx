@@ -60,7 +60,7 @@ function HomePage() {
             <HomeRecommendationSection />
           </div>
           <div className='BY_RecommendationsButtonSection'>
-            <button >المزيد</button>
+            <button onClick={()=> navigate(`/explore/lands`)}>المزيد</button>
           </div>
 
         </div>

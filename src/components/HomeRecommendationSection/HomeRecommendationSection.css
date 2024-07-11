@@ -15,12 +15,17 @@
     font-size: 1.2rem;
     justify-content: center;
     align-self: center;
+
+
+    &:hover {
+        font-size: 1.4rem;
+    }
 }
 
 .BY_RecommendationSectionCardsContainer .BY_dots {
     display: flex;
     justify-content: space-between;
-    gap: 3px;
+    gap: 5px;
 
 
 }
@@ -32,7 +37,42 @@
     justify-content: center;
     color: #8DD3BB;
     cursor: pointer;
+
+    &:hover {
+        color: #5c8979;
+    }
 }
-.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:first-child, .BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:last-child{
+
+.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:first-child,
+.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:last-child {
     color: #C9E8DE;
+
+    &:hover {
+        color: #7a8c86;
+    }
+}
+
+.BY_RecommendationSectionCardsContainer .BY_CardsSection {
+   
+    width: 100%;
+
+    padding: 15px 0px 20px 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    justify-items: center;
+    min-width: 1200px
+}
+
+@media (max-width: 1200px) {
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection {
+        background-color: #C9E8DE;
+        overflow: hidden;
+        position: relative;
+        /* width: 150%; */
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+    }
 }

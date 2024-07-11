@@ -8,7 +8,12 @@ import Hero from '../../components/Hero/Hero'
 import blogCardImage from './../../assets/images/home-blog.jpg'
 import shapeImage from './../../assets/images/shape-res.png'
 import homeCover from './../../assets/images/home-cover.png'
+import Button from '../../shared/Button/Button'
+import { useNavigate } from "react-router-dom"
+import HomeRecommendationSection from '../../components/HomeRecommendationSection/HomeRecommendationSection'
+
 function HomePage() {
+  const navigate = useNavigate();
   return (
     <div className='home-page'>
       <Hero backgroundImage={homeCover} />
@@ -38,15 +43,34 @@ function HomePage() {
                   تقع سوريا في منطقة الشرق الأوسط، وتتمتع بموقع جغرافي متميز، حيث تربط بين آسيا وأفريقيا وأوروبا. هذا الموقع جعلها مركزاً تجارياً وثقافياً مهماً من آلاف السنين تمتلك سوريا تاريخًا عريقًا يعود إلى آلاف السنين، حيث كانت موطنًا للعديد من الحضارات القديمة، مثل الحضارة الآشورية والحضارة البابلية والحضارة الفينيقية
                 </p>
               </div>
-              <Link to='/brief' className="brief-button pt-2">
-                <button>{"<"}  اقرأ المزيد </button>
-              </Link>
+              <Button
+                btnText="اقرأ المزيد"
+                onClick={() => navigate('/about/history')} />
             </div>
           </div>
         </div>
       </div>
+      <div className='BY_RecommendationsHomeSection'>
+        <div className="BY_RecommendationsSectionContainer">
+          <div className="BY_HeaderSection">
+            <h1>التوصيات</h1>
+            <p>نقدم لكم افضل الاماكن الممكن زيارتها في سوريا بناءً على تجارب الزوار والأفضل تقييماً</p>
+          </div>
+          <div className="BY_RecommendationsCardsSection">
+            <HomeRecommendationSection />
+          </div>
+          <div className='BY_RecommendationsButtonSection'>
+            <button onClick={()=> navigate(`/explore/lands`)}>المزيد</button>
+          </div>
+
+        </div>
+      </div>
+
       <div className="home-blog-card mb-5">
         <div className="home-blog-container">
+          <div className="card-blog-title_responsive">
+            <h1>المدونة </h1>
+          </div>
           <div className="home-blog-content">
             <div className="home-blog-image">
               <div className="background-squre"></div>
@@ -62,14 +86,17 @@ function HomePage() {
                   اقرأ المدونات التي تتحدث عن طبيعة وآثار سوريا، وسوف تجد نفسك على رحلة استكشافية مثيرة في عالم غني بالتنوع البيئي و السياحي و الأثري والجمال الطبيعي
                 </p>
               </div>
-              <Link to='/blog' className="brief-button ">
-                <button>{"<"}  من هنا   </button>
-              </Link>
+              <Button
+                btnText="من هنا"
+                className="BY_card_blog_button_home"
+                onClick={() => navigate('/blogs/marks')} />
+
             </div>
           </div>
         </div>
       </div>
     </div>
+
   )
 }
 

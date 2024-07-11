@@ -120,7 +120,10 @@ function PlaceDetailsHotel() {
                                         {line}
                                         <br />
                                     </React.Fragment>
-                                ))}</p>
+
+                                ))}
+                                {/* {hotel.secondary_description} */}
+                                </p>
                         </div>
                         <div className="place-gallery">
                             <PhotoSlider imgs={hotelImages} />

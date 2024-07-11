@@ -30,8 +30,9 @@ const Button = ({ btnText, radius, className, onClick ,setIsClicked}) => {
         borderColor: "white",
         outline: "solid 1px #8DD3BB",
         borderRadius: `${radius}`,
-        color: "var(--black_button_tex)",
+        color: "#112211",
         opacity : setIsClicked ? 0.5:1
+
     };
 
     return (

@@ -1,0 +1,243 @@
+.BY_RecommendationSectionCardsContainer {
+    width: 100%;
+}
+
+.BY_RecommendationSectionCardsContainer .BY_PaginationSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BY_RecommendationSectionCardsContainer .BY_leftArrow,
+.BY_RecommendationSectionCardsContainer .BY_rightArrow {
+    cursor: pointer;
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: center;
+    align-self: center;
+
+
+    &:hover {
+        font-size: 1.4rem;
+    }
+}
+
+.BY_RecommendationSectionCardsContainer .BY_dots {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+
+
+}
+
+.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot {
+    font-size: 2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    color: #8DD3BB;
+    cursor: pointer;
+
+    &:hover {
+        color: #5c8979;
+    }
+}
+
+.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:first-child,
+.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:last-child {
+    color: #C9E8DE;
+
+    &:hover {
+        color: #7a8c86;
+    }
+}
+
+.BY_RecommendationSectionCardsContainer .BY_CardsSection {
+
+    width: 100%;
+
+    padding: 15px 0px 20px 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    justify-items: center;
+    min-width: 1200px
+}
+
+
+@media (max-width: 442px) {
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column-gap: 10px;
+    }
+
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection .BY_MainCard:nth-child(1) {
+        animation: slide-animation-1 20s infinite;
+    }
+
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection .BY_MainCard:nth-child(2) {
+        animation: slide-animation-2 20s infinite;
+    }
+
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection .BY_MainCard:nth-child(3) {
+        animation: slide-animation-3 20s infinite;
+    }
+
+    @keyframes slide-animation-1 {
+        0% {
+            transform: translateX(0%) scale(1);
+        }
+
+        25% {
+            transform: translateX(-100%) scale(0.8);
+        }
+
+        50% {
+            transform: translateX(-190%) scale(1);
+        }
+
+        75% {
+            transform: translateX(-100%) scale(0.8);
+        }
+
+        100% {
+            transform: translateX(0%) scale(1);
+        }
+    }
+
+    @keyframes slide-animation-2 {
+        0% {
+            transform: translateX(3%) scale(0.8);
+        }
+
+        25% {
+            transform: translateX(-100%) scale(1);
+        }
+
+        50% {
+            transform: translateX(-200%) scale(0.8);
+        }
+
+        75% {
+            transform: translateX(-100%) scale(1);
+        }
+
+        100% {
+            transform: translateX(3%) scale(0.8);
+        }
+    }
+
+    @keyframes slide-animation-3 {
+        0% {
+            transform: translateX(3%) scale(0.8);
+        }
+
+        25% {
+            transform: translateX(-75%) scale(0.8);
+        }
+
+        50% {
+            transform: translateX(-200%) scale(1);
+        }
+
+        75% {
+            transform: translateX(-100%) scale(0.8);
+        }
+
+        100% {
+            transform: translateX(3%) scale(0.8);
+        }
+    }
+}
+
+@media (min-width:442px) and (max-width: 1200px) {
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection {
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection .BY_MainCard:nth-child(1) {
+      animation: slide-animation-1 20s infinite;
+    }
+  
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection .BY_MainCard:nth-child(2) {
+      animation: slide-animation-2 20s infinite;
+    }
+  
+    .BY_RecommendationSectionCardsContainer .BY_CardsSection .BY_MainCard:nth-child(3) {
+      animation: slide-animation-3 20s infinite;
+    }
+  
+    @keyframes slide-animation-1 {
+      0% {
+        transform: translateX(10%) scale(1);
+      }
+  
+      25% {
+        transform: translateX(-75%) scale(0.8);
+      }
+  
+      50% {
+        transform: translateX(-180%) scale(1);
+      }
+  
+      75% {
+        transform: translateX(-75%) scale(0.8);
+      }
+  
+      100% {
+        transform: translateX(10%) scale(1);
+      }
+    }
+  
+    @keyframes slide-animation-2 {
+      0% {
+        transform: translateX(10%) scale(0.8);
+      }
+  
+      25% {
+        transform: translateX(-75%) scale(1);
+      }
+  
+      50% {
+        transform: translateX(-180%) scale(0.8);
+      }
+  
+      75% {
+        transform: translateX(-75%) scale(1);
+      }
+  
+      100% {
+        transform: translateX(10%) scale(0.8);
+      }
+    }
+  
+    @keyframes slide-animation-3 {
+      0% {
+        transform: translateX(10%) scale(0.8);
+      }
+  
+      25% {
+        transform: translateX(-75%) scale(0.8);
+      }
+  
+      50% {
+        transform: translateX(-180%) scale(1);
+      }
+  
+      75% {
+        transform: translateX(-75%) scale(0.8);
+      }
+  
+      100% {
+        transform: translateX(10%) scale(0.8);
+      }
+    }
+  }

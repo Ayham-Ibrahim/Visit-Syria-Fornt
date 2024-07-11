@@ -17,9 +17,9 @@ const Card = ({ image, title, rate, brief, location, button, price_exists, price
                 {price_exists ?
                     <div className='middle_section'>
                         <div className="location">{location}<i><GrLocation /></i></div>
-                        <div className="brief_section">{brief.slice(0, 185)} ...</div>
+                        <div className="brief_section">{brief.slice(0, 125)} ...</div>
                     </div> :
-                    <div className="brief_section">{brief.slice(0, 185)} ...</div>
+                    <div className="brief_section">{brief.slice(0, 175)} ...</div>
                 }
                 <div className="bottom_section">
                     {price_exists ?

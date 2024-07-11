@@ -1,10 +1,11 @@
-
 import { IoIosArrowBack } from "react-icons/io";
 import { FaComments } from "react-icons/fa6";
 import { IoMdStar } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
+// import { useState } from "react";
 // import "./Button.css";
-const Button = ({ btnText, radius, className, onClick }) => {
+const Button = ({ btnText, radius, className, onClick ,setIsClicked}) => {
+    // const [isclicked,setIsClicked] = useState(false);
     const renderIcon = () => {
         switch (btnText) {
             case "اقرأ المزيد":
@@ -30,6 +31,7 @@ const Button = ({ btnText, radius, className, onClick }) => {
         outline: "solid 1px #8DD3BB",
         borderRadius: `${radius}`,
         color: "var(--black_button_tex)",
+        opacity : setIsClicked ? 0.5:1
     };
 
     return (

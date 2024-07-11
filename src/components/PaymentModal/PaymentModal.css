@@ -1,4 +1,5 @@
 .modal {
+    direction: rtl;
     display: block;
     backdrop-filter: blur(7px);
     background-color: rgba(0, 0, 0, 0.7);
@@ -34,3 +35,34 @@
     color: #dadada; 
 }
 
+.modal .modal-body .form-group {
+    margin-top: 20px;
+}
+
+.modal .modal-body .form-group.select div {
+    position: relative;
+
+}
+.modal .modal-body .form-group.select .select-icon-Ay{
+    position: absolute;
+    z-index: 100;
+    top: 30%;
+    left: 2%;
+}
+
+.modal-footer button {
+    width: 100%;
+}
+
+.modal .payment-span-Ay {
+    text-align: center;
+  font-size: 10px;
+  margin-bottom: 20px;
+  font-weight: 100;
+  padding: 0 20px;
+  color: gray;
+}
+
+.payment-modal-AY {
+    padding: 20px;
+}

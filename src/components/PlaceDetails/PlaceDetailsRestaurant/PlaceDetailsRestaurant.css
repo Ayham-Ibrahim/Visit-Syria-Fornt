@@ -114,6 +114,7 @@
 .place-details-restaurant  .restaurant-images div.book-button{
     width: 95%;
     left: 0;
+    margin-top: 10px;
 }
 .place-details-restaurant  .restaurant-images div.book-button.position-absolute > button{
     width: 100%;

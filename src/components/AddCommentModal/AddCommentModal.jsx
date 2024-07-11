@@ -1,12 +1,41 @@
 // import React from 'react'
+import { useState } from "react";
 import Button from "../../shared/Button/Button"
-import "./AddCommentModal.css"
-const AddCommentModal = ({toggleCommentModal}) => {
+import axios from "axios"
 
-    const sendComment = () =>{
-        console.log("sended")
-        toggleCommentModal(!toggleCommentModal);
-    }
+import "./AddCommentModal.css"
+import { toast } from "react-toastify";
+const AddCommentModal = ({ toggleCommentModal, hotelId, restaurantId, landmarkId, placeType }) => {
+    const [isclicked,setIsClicked] = useState(false);
+    const [commentText, setCommentText] = useState('');
+
+    const apiUrl = `http://127.0.0.1:8000/api/add-${placeType}-comment/${placeType === 'hotel' ? hotelId : placeType === 'restaurant' ? restaurantId : landmarkId}`;
+    const sendComment = async () => {
+        setIsClicked(true)
+        const token = localStorage.getItem('token');
+        const data = {
+            comment_content : commentText,
+            }
+            axios.post(apiUrl, data, {
+            headers: {
+                Authorization: 'Bearer ' + token,
+            }
+            })
+            .then(res => {
+                if(res?.status === 200) {
+                toggleCommentModal();
+                toast.success('تمت الإضافة بنجاح')
+                // to('/hotels');
+                }
+            })
+            .catch(err =>{
+                if(err?.response?.data?.data) {
+                toast.error(err?.response?.data?.data[0])          
+                } else {
+                toast.error(err.message)
+                }
+            }).finally(() => setIsClicked(false));
+    };
 
     return (
     <div>
@@ -22,10 +51,17 @@ const AddCommentModal = ({toggleCommentModal}) => {
         <div className="modal-body">
     
             <h5 className="card-title" style={{ direction:"rtl" }}>من فضلك اكتب لنا رأيك بخدماتنا</h5>
-            <input type="text" name="comment" id="comment" style={{ width:"100%",marginTop:"20px" }}/>
+            <input
+                type="text"
+                name="comment"
+                id="comment"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                style={{ width: "100%", marginTop: "20px" }}
+            />        
         </div>
         <div className="modal-footer">
-            <Button btnText={"ارسال"} onClick={sendComment}/>
+            <Button btnText={"ارسال"} onClick={sendComment} setIsClicked={isclicked}/>
         </div>
         </div>
     </div>

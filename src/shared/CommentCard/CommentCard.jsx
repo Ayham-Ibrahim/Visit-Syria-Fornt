@@ -14,9 +14,7 @@ const CommentCard = (Props) => {
         </div>
       </div>
       <div className="content-comment-card align-items-center">
-        My recent stay at [Hotel Name] was nothing short of exceptional. From
-        the moment I arrived until my departure, every aspect of the hotel
-        exceeded my expectations.
+        {Props.content}
       </div>
     </div>
 

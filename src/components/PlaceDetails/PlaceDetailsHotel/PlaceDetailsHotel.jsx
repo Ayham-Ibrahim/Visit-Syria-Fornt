@@ -74,8 +74,6 @@ function PlaceDetailsHotel() {
             setLoading(true);
             const response = await hotelSrevices.getHotelByID(id);
             setHotel(response.data);
-            console.log('hotel response', response.data);
-
         } catch (error) {
             setLoading(false);
             console.log(error);
@@ -91,7 +89,6 @@ function PlaceDetailsHotel() {
             setImages(hotel.images.map((str) => mainURL + str));
         }
         setLoading(false);
-        console.log('hotel Images', hotelImages);
     }, [hotel]);
     return (
         <>
@@ -124,8 +121,6 @@ function PlaceDetailsHotel() {
                                         <br />
                                     </React.Fragment>
                                 ))}</p>
-
-
                         </div>
                         <div className="place-gallery">
                             <PhotoSlider imgs={hotelImages} />
@@ -160,11 +155,10 @@ function PlaceDetailsHotel() {
                                         onClick={() => navigate(`/booking`)} />
                                 </div>
                             </div>
-
                         </div>
                         <div className='green-line' ></div>
                         <div className="container" style={{ padding:"0 40px" }}>
-                            <CommentSection/>
+                        <CommentSection hotelID={hotel.id} restaurantID={null} landmarkID={null} placeType="hotel" />
                         </div>
                         <div className='green-line' ></div>
                         <ContactSection />

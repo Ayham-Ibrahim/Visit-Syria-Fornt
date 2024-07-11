@@ -7,10 +7,10 @@ function SectionRating() {
 
     const [ratings, setRatings] = useState(SectionRatingData.map((item) => item.rate));
     
-   useEffect(()=>{
-          console.log(ratings)
-          // axios
-   },[])
+  //  useEffect(()=>{
+  //         console.log(ratings)
+  //         // axios
+  //  },[])
 
   return (
     <div className='container rating-view   ' dir="rtl">

@@ -32,14 +32,19 @@
   max-height: 380px;
   padding: 22px 30px;
   border-radius: 15px;
-  min-width: 279px;
+  min-width: 569px;
   min-height: 233px;
+  width: 569px;;
+}
+.user-comment { 
+  direction: ltr;
 }
 .comment-card .comment-image {
   width: fit-content;
 }
 .comment-card .comment-image img {
-  width: 100%;
+  width: 100px;
+  border-radius: 50%;
 }
 .comment-writer-name {
   font-size: 32px;
@@ -53,6 +58,20 @@
   color: var(--light_green_text);
 }
 
+@media (min-width:768px) and (max-width:992px){
+  .comment-card {
+    min-width: 459px;
+  }
+  .comment-card .comment-image img {
+    width: 80px;
+  }
+  .comment-writer-name {
+    font-size: 28px;
+  }
+  .content-comment-card {
+    font-size: 18px;
+  }
+}
 
 @media (max-width:768px) {
   .comment-card {
@@ -74,6 +93,9 @@
     line-height: 30.45px;
   }  
   .comment-card .comment-image {
-    width: 60px;
+    width: fit-content;
+  }
+  .comment-card .comment-image img {
+    width: 70px;
   }
 }

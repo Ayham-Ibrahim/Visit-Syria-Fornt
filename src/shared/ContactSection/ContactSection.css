@@ -78,12 +78,22 @@ div.container.contact-section > div.contact-Ay > div.row.g-0 > div.col-4.social-
   padding: 0;
   margin-bottom: 10px;
 }
+/* .contact-section .contact-AYY {
+  width: 100% !important;
+} */
+.contact-Ay {
+  display: none;  
+}
 
 }
 
 @media (min-width:769px) {
   .mobile-view-social {
     display: none !important;
+  }
+  .mobile-view-contact{
+    display: none !important;
+
   }
 }
 
@@ -93,4 +103,11 @@ div.container.contact-section > div.contact-Ay > div.row.g-0 > div.col-4.social-
     font-size: 0.9rem;
     width: 90%;
   }  
+}
+
+
+.mobile-view-location-ay {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
 }

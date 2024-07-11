@@ -75,13 +75,13 @@ const RecommendationsPage = () => {
         let path;
         switch (section) {
             case 'hotels':
-                path = '/hotels';
+                path = '/hotel-details';
                 break;
             case 'resturants':
-                path = '/restaurant';
+                path = '/restaurant-details';
                 break;
             case 'lands':
-                path = '/landmark';
+                path = '/landmark-details';
                 break;
             default:
                 path = '/';

@@ -93,13 +93,13 @@ function PlaceDetailsRestaurant() {
                         </div>
                         <div className="place-description">
                             <p className='m-0'> 
-                                {/* {restuarant.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
+                                {restuarant.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
                                 <React.Fragment key={index}>
                                     {line}
                                     <br />
                                 </React.Fragment>
-                            ))} */}
-                            {restuarant.secondary_description}
+                            ))}
+                            {/* {restuarant.secondary_description} */}
                             </p>
 
                         </div>

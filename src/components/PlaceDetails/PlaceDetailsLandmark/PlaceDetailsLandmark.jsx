@@ -62,13 +62,13 @@ function PlaceDetailsLandmark() {
                         </div>
                         <div className="place-description">
                             <p className='m-0'>
-                                {/* {landmark.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
+                                {landmark.secondary_description.split('.').join('.\n\n').split('\n').map((line, index) => (
                                 <React.Fragment key={index}>
                                     {line}
                                     <br />
                                 </React.Fragment>
-                            ))} */}
-                            {landmark.secondary_description}
+                            ))}
+                            {/* {landmark.secondary_description} */}
                             </p>
 
                         </div>

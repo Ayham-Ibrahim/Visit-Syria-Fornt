@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom"
 import * as landmarkServices from '../../../helpers/LandMarksServices/LandMarksServices';
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
 import React from 'react'
+import CommentSection from '../../../shared/CommentSection/CommentSection';
 
 function PlaceDetailsLandmark() {
 
@@ -20,8 +21,6 @@ function PlaceDetailsLandmark() {
             setLoading(true);
             const response = await landmarkServices.getlandmarkByID(id);
             setLandmark(response.data);
-            console.log('Landmark response', response.data);
-
         } catch (error) {
             setLoading(false);
             console.log(error);
@@ -37,7 +36,6 @@ function PlaceDetailsLandmark() {
             setImages(landmark.images.map((str) => mainURL + str));
         }
         setLoading(false);
-        console.log('landmarkImages', landmarkImages);
     }, [landmark]);
 
     return (
@@ -74,6 +72,10 @@ function PlaceDetailsLandmark() {
                         </div>
                         <div className="place-gallery">
                             <PhotoSlider imgs={landmarkImages} />
+                        </div>
+                        <div className='green-line'></div>
+                        <div className="container" style={{ padding:"0 40px" }}>
+                        <CommentSection hotelID={null} restaurantID={null} landmarkID={landmark.id} placeType="landmark" />
                         </div>
                         <div className='green-line'></div>
                     </div>

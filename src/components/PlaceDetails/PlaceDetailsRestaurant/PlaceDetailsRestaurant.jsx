@@ -17,6 +17,7 @@ import * as restaurantServices from '../../../helpers/RestaurantsServices/Restau
 import { mainURL } from '../../../helpers/ExploreServices/ExploreURLs';
 import React from 'react'
 import img from '../../../assets/images/betalwai2.png'
+import CommentSection from '../../../shared/CommentSection/CommentSection';
 function PlaceDetailsRestaurant() {
 
     const { id } = useParams();
@@ -49,8 +50,6 @@ function PlaceDetailsRestaurant() {
             setLoading(true);
             const response = await restaurantServices.getRestaurantByID(id);
             setRestuarant(response.data);
-            console.log('restuarant response', response.data);
-
         } catch (error) {
             setLoading(false);
             console.log(error);
@@ -63,10 +62,9 @@ function PlaceDetailsRestaurant() {
 
     useEffect(() => {
         if (restuarant) {
-            setImages(restuarant.images.map((str) =>  str));
+            setImages(restuarant.images.map((str) =>  mainURL + str));
         }
         setLoading(false);
-        console.log('restuarant Images', restuarantImages);
     }, [restuarant]);
     return (
         <>
@@ -120,6 +118,10 @@ function PlaceDetailsRestaurant() {
                                     <Button btnText="إحجز الآن" radius={9} onClick={() => navigate(`/booking`)} />
                                 </div>
                             </div>
+                        </div>
+                        <div className='green-line' ></div>
+                        <div className="container" style={{ padding:"0 40px" }}>
+                        <CommentSection hotelID={null} restaurantID={restuarant.id} landmarkID={null} placeType="restaurant" />
                         </div>
                         <div className='green-line' ></div>
                         <ContactSection />

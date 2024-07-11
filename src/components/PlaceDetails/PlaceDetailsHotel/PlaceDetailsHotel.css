@@ -233,3 +233,11 @@
     }
     
 }
+
+
+@media (max-width: 420px) {
+    .place-details-hotel .hotel-rooms .room-images img{
+        width: 262px;
+        height: 192px;
+    }
+}

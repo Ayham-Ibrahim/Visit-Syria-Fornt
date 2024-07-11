@@ -23,6 +23,28 @@ const ContactSection = () => {
               <FaXTwitter className="social-media-icon" />
             </div>
           </div>
+          <div className="col-7 mobile-view-contact">
+            <div className="mobile-view-location-ay">
+            <FaLocationDot className="social-media-icon" />
+            <div className=""> سوريا ـ اللاذقية - طريق طرطوس</div>
+            </div>
+            <div className="mobile-view-location-ay">
+            <TbWorldWww className="social-media-icon" />
+            <div className=""> mbrestor-sy.com</div>
+            </div>
+            <div className="mobile-view-location-ay">
+            <BsTelephoneFill className="social-media-icon " />
+            <div className=""> +963-0988 900 800 </div>
+            </div>
+            <div className="mobile-view-location-ay">
+            <IoIosMail className="social-media-icon" />
+            <div className="">info@mbrestor-sy.com</div>
+            </div>
+            <div className="mobile-view-location-ay">
+            <TbClockHour3 className="social-media-icon" />
+              <div className="">24 / 24</div>
+            </div>
+          </div>
           <div className="contact-Ay">
           <div className="row  g-0 ">
           <div className="col-4">

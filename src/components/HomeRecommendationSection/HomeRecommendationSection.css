@@ -1,0 +1,38 @@
+.BY_RecommendationSectionCardsContainer {
+    width: 100%;
+}
+
+.BY_RecommendationSectionCardsContainer .BY_PaginationSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BY_RecommendationSectionCardsContainer .BY_leftArrow,
+.BY_RecommendationSectionCardsContainer .BY_rightArrow {
+    cursor: pointer;
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: center;
+    align-self: center;
+}
+
+.BY_RecommendationSectionCardsContainer .BY_dots {
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
+
+
+}
+
+.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot {
+    font-size: 2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    color: #8DD3BB;
+    cursor: pointer;
+}
+.BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:first-child, .BY_RecommendationSectionCardsContainer .BY_dots .BY_dot:last-child{
+    color: #C9E8DE;
+}
